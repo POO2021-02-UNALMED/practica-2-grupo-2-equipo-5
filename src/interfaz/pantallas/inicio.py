@@ -1,10 +1,14 @@
 import tkinter as tk
 from estilos import styles as style
+from PIL import Image, ImageTk
 
-class Inicio(tk.Frame):
+class Inicio(tk.Frame, tk.Tk):
+
+    
 
     VALUES  = [
-        {"name": "Jaime Andrés Monsalve Ballesteros", "phone":"(+57) 300 724 2377", "email":"jmonsalveb@unal.edu.co" },
+        {"name": "Jaime Andrés Monsalve Ballesteros", "phone":"(+57) 300 724 2377", "email":"jmonsalveb@unal.edu.co",
+        "imagenes": [0]},
         {"name": "Fredy Alberto Orozco Loaiza", "phone":"(+57) 310 458 6939", "email":"frorozcol@unal.edu.co" },
         {"name":"Diego Valentin Osorio Marin", "phone":"(+57) 313 786 51 60", "email":"dosoriom@unal.edu.co"}
     ]
@@ -105,5 +109,10 @@ class Inicio(tk.Frame):
         
     
     def inicializarWidgetsVentana4(self):
-        pass
 
+        imagen = Image.open('./src/interfaz/Imagenes/Bonfire.jpg')
+        python_imagen = ImageTk.PhotoImage(imagen)
+        
+        tk.Label(self._p6, image = python_imagen).grid(row=0, column=0, columnspan=3)
+        
+        
