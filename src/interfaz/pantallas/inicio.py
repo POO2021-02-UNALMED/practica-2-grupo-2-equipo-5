@@ -43,14 +43,11 @@ class Inicio(tk.Frame):
         pass
     
     def inicializarWidgetsVentana3(self, contenedor):
-        tk.Label(
-            contenedor,
-            text = "Jaime Andrés Monsalve Ballesteros",
-            bg = "red" 
-        ).grid(row = 0, column = 0, columnspan = 2, sticky = tk.EW)
-        
-        tk.Label(contenedor, text = "Contacto").grid(row = 1, column = 0)
-        tk.Label(contenedor, text = "(+57) 300 724 2377").grid(row=1, column=1)
+        label1 = tk.Label(contenedor, text = "Jaime Andrés Monsalve Ballesteros", bg = "red" )
+        label1.grid(row=0, column=0, columnspan=2, sticky=tk.EW)
+    
+        tk.Label(contenedor, text = "Contacto").grid(row = 1, column = 0, sticky=tk.EW)
+        tk.Label(contenedor, text = "(+57) 300 724 2377").grid(row=1, column=1, sticky=tk.EW)
         
         tk.Label(contenedor, text="Email").grid(row=2, column=0)
         tk.Label(contenedor, text="jmonsalveb@unal.edu.co").grid(row=2, column=1)
@@ -61,6 +58,7 @@ class Inicio(tk.Frame):
         tk.Label(contenedor, text="Universidad").grid(row=4, column=0)
         tk.Label(contenedor, text="Unal").grid(row=4, column=1)
         
-    
+        contenedor.columnconfigure(0, weight=1)
+        
     def inicializarWidgetsVentana4(self, contenedor):
         pass
