@@ -67,7 +67,7 @@ class Inicio(tk.Frame):
         tk.Label(contenedor, text="Universidad").grid(row=4, column=0)
         universidad = tk.Label(contenedor, text="Unal").grid(row=4, column=1)\
 
-        numero.bind('<ButtonPress-1>', Inicio.imprimir)
+        
 
 
         
