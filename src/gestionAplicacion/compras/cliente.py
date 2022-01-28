@@ -53,6 +53,3 @@ class Cliente:
 
     def setFechaNacimiento(self, fecha_nacimiento):
         self._fecha_nacimiento = fecha_nacimiento
-
-    
-
