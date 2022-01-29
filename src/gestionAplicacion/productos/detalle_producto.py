@@ -19,8 +19,8 @@ class DatalleProductos:
         self._precio_garantia = precio_garantia
         self._esDevolucion = esDevolucion
         self._id = DatalleProductos._contador
-        self._Productos = []
-        self._CompraProductos = []
+        
+    
         DatalleProductos._detalles_productos[self._id] = self
         DatalleProductos._contador =+ 1
         
@@ -60,30 +60,11 @@ class DatalleProductos:
     def getId(self)->int:
         """Retorna el id del objecto """        
         return self._id
-    
-    def getProductos(self)->list:
-        """Retorna una lista de productos asociados al objecto"""        
-        return self._Productos
-    
-    def setProductos(self, productos:list)->None:
-        """Se le asiga una lista de objectos tipo ProOk 
 
-        Args:
-            productos (list): [description]
-        """        
-        self._Productos = productos
-    
     def getCompraProducto(self)->list:
         """Retorna una lista de objectos de CompraProducto"""        
         return self._CompraProductos
     
-    def setCompraProducto(self, compra_producto:list)->None:
-        """Le asigna una lista de compra producto
-
-        Args:
-            compra_producto (list): Lista de objectos de CompraProducto que se asocia con esta
-        """        
-        self._CompraProductos = compra_producto
     
     @classmethod
     def getDetallesCompra(cls)->dict:
@@ -104,25 +85,6 @@ class DatalleProductos:
     def getContador(cls)->int:
         """Retorna el contadot de la clase"""     
         return cls._contador
-    
-    def agregarProducto(self, producto:Producto)->None:
-        """Agrega un producto al detalle compra
-
-        Args:
-            producto (Producto): Es un objecto tipo producto.
-        """        
-        if isinstance(producto,Producto):
-            self._Productos.append(producto)
-    
-    def agregarCompraProducto(self, compra_producto:CompraProductos)->None:
-        """Agrega un producto al objeceto
-
-        Args:
-            compra_producto (CompraProductos): debe ser un objecto de la clase CompraPruductos.
-
-        """        
-        if isinstance(compra_producto, CompraProductos):
-            self._CompraProductos.append(compra_producto)
         
         def __str__(self):
             return    "Id: "                  + str(self._id) + "\n" \

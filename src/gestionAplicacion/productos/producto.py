@@ -1,4 +1,7 @@
-from tipo_producto import TipoProducto
+from itertools import product
+from detalle_producto import DatalleProductos
+
+
 class Producto:
     _TodosProductos = {}
     def __init__(self, codigo:int, nombre:str, fecha_ingreso:str, precio:float, descripcion:str=None) -> None:
@@ -17,17 +20,13 @@ class Producto:
         self._precio = precio
         self._descripcion = descripcion
 
-        self._Productos = []
-        self._TipoProducto = []
+        self._Detalle_Producto = []
         Producto._TodosProductos[self._codigo] = self
 
         def getCodigo(self)->int:
             """Retorna el código del producto"""    
             return self._codigo     
 
-        def setCodigo(self, codigo:int)->None:
-            """Cambia el código del producto"""
-            self._codigo = codigo
         
         def getFechaIngreso(self)->str:
             return self._fecha_ingreso
@@ -62,7 +61,7 @@ class Producto:
             Args:
                 nueva_des (str): Es la nueva descripcion del producto
             """
-            self.__descripcion = nueva_des
+            self._descripcion = nueva_des
         
         def getProductos(self)->list:
             """Retorna la lista de los productos"""
@@ -76,17 +75,17 @@ class Producto:
             """            
             self._Productos = list_products
         
-        def getTipoProductos(self)->list:
-            """Retorna la lista de productos"""            
-            return self._TipoProducto
+        def getDetalleProducto(self)->list:
+            """Retorna una lista de productos asociados al objecto"""        
+            return self._Deatalle_Producto
         
-        def setTipoProducto(self, tipo_producto:list)->None:
-            """Cambia el valor a la lista de productos.
-
+        def setDetalleProducto(self, productos:list)->None:
+            """Se le asiga una lista de objectos tipo ProOk 
             Args:
-                tipo_producto (list): Nueva lista de productos que se va a poner.
-            """            
-            self._TipoProducto = tipo_producto
+                productos (list): [description]
+            """        
+            self._Deatalle_Producto = productos
+        
         
         @classmethod
         def getTodosProductos(cls)->dict:
@@ -111,15 +110,16 @@ class Producto:
             if isinstance(producto, Producto):
                 self._Producto.append(producto)
         
-        def agregarTipoProducto(self, tipo_producto:TipoProducto)->None:
-            """Agrega un tipo producto a la lista que tiene producto
+        def agregarDetalleProductos(self, detalle_producto:DatalleProductos)->None:
+            """Se agraga un tipo de detalle producto
 
             Args:
-                tipo_producto (TipoProducto): Este es el tipo producto a agregar
+                detalle_producto (DatalleProductos): se agrega el nuevo producto, 
             """            
-            if isinstance(tipo_producto,TipoProducto):
-                self._TipoProducto.append(tipo_producto)
-        
+            if isinstance(detalle_producto, DatalleProductos):
+                self._Detalle_Producto.append(detalle_producto)
+
+
         def __str__(self)->str:
              return   "Codigo"                + str(self._codigo) + "\n" \
                     + "Nombre: "              + self._nombre + "\n" \
