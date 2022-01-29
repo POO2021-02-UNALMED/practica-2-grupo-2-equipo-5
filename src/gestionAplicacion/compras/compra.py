@@ -1,7 +1,7 @@
-from sqlalchemy import desc
-
-
 class Compra:
+
+    # diccionario para guardar todas las compras registradas en el sistema
+    _compras = {}
 
     #Indice para tener identificador unico de las compras
     _index_codigo_compra = 0
@@ -16,7 +16,11 @@ class Compra:
         # Relación con Cliente
         self._cliente = None
 
+        # Aumentar el indice del identificador
         Compra._index_codigo_compra += 1
+
+        # Se guarda el objeto en un diccionario con su identificador como llave
+        Compra._compras[self._codigo_compra] = self
 
     # Método para asiganrle cliente a una compra
     def asignarCliente(self, cliente):
@@ -38,3 +42,19 @@ class Compra:
 
     def setDescuento(self, descuento):
         self._descuento = descuento
+
+    # Método de clase para obtener tas las compra registradss en el sistema
+    @classmethod
+    def getClientes(cls):
+        return cls._compras
+
+    # Método de clase para establecer todas las compras registradas en el sistema
+    @classmethod
+    def setClientes(cls, compras):
+        cls._compras = compras
+
+    # Método toString
+    def __str__(self):
+        return    "Codigo compra: " + str(self.getCodigoCompra()) + "\n" \
+                + "Descripcion: "   + self.getDescripcion() + "\n" \
+                + "Descuento: "     + self.getDescuento() + "\n"

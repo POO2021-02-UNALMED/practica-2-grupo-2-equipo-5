@@ -24,3 +24,8 @@ class CompraServicios(Compra):
     # Métodos set
     def setTiempoDeCulminacion(self, tiempo_de_culminacion):
         self._tiempo_de_culminacion = tiempo_de_culminacion
+
+    # Método toString
+    def __str__(self):
+        return   super().__str__() \
+               + "Tiempo de culminacion: " + self.getTiempoDeCulminacion() + "\n" 

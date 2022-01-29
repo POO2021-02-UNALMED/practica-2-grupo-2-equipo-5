@@ -32,3 +32,9 @@ class CompraProductos(Compra):
     def setDevolucion(self, devolucion):
         self._devolucion = devolucion
 
+    # Método toString
+    def __str__(self):
+        return   super().__str__() \
+               + "Fecha de compra: " + self.getFechaDeCompra() + "\n" \
+               + "Devolución: " + str(self.getDevolucion()) + "\n"
+

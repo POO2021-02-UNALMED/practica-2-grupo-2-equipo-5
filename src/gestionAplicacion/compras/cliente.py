@@ -1,5 +1,8 @@
 class Cliente:
 
+    # diccionario para guardar todos los clientes registrados en el sistema
+    _clientes = {}
+
     #Indice para tener identificador unico de los clientes
     _index_cedula = 0
 
@@ -15,7 +18,11 @@ class Cliente:
         # Relación con Compra
         self._compras = None
 
+        # Aumentar el indice del identificador
         Cliente._index_cedula += 1
+
+        # Se guarda el objeto en un diccionario con su identificador como llave
+        Cliente._clientes[self._cedula] = self
 
     # Método para agregarle compras a un cliente
     def agregarCompra(self, compra):
@@ -53,3 +60,22 @@ class Cliente:
 
     def setFechaNacimiento(self, fecha_nacimiento):
         self._fecha_nacimiento = fecha_nacimiento
+
+    # Método de clase para obtener todos los clientes registrados en el sistema
+    @classmethod
+    def getClientes(cls):
+        return cls._clientes
+
+    # Método de clase para establecer todos los clientes registrados en el sistema
+    @classmethod
+    def setClientes(cls, clientes):
+        cls._clientes = clientes
+
+    # Método toString
+    def __str__(self):
+        return    "Cédula: "              + str(self.getCedula()) + "\n" \
+                + "Nombre: "              + self.getNombre() + "\n" \
+                + "Direccion: "           + self.getDirección() + "\n" \
+                + "Telefono: "            + str(self.getTelefono()) + "\n" \
+                + "Fecha de nacimiento: " + self.getFechaNacimiento() + "\n"
+                
