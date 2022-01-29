@@ -53,7 +53,7 @@ class Servicio:
         cls._Servicios = servicios
     
     def __str__(self)->str:
-        return  "id"                + str(self._id) + "\n" \
+        return  "id: "                + str(self._id) + "\n" \
                 + "precio: "        + str(self._precio) + "\n" \
                 + "fecha de servicio: " + self._fecha_servicio + "\n" \
     

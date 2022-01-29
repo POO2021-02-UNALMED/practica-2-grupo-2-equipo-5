@@ -86,8 +86,8 @@ class DatalleProductos:
         """Retorna el contadot de la clase"""     
         return cls._contador
         
-        def __str__(self):
-            return    "Id: "                  + str(self._id) + "\n" \
+    def __str__(self):
+        return      "Id: "                  + str(self._id) + "\n" \
                     + "Garantia: "            + self._garantias + "\n" \
                     + "Precio garantia: "     + self._precio_garantia + "\n" \
                     + "Es Devolución: "       + str(self._esDevolucion) + "\n" \
