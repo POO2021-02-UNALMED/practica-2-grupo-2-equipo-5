@@ -7,7 +7,7 @@ BACKGROUND_P = "#ABB2B9"
 
 # Estilos de la ventana 1 
 FONT = ("Arial", 20)
-BG1 = "#D5D8DC"
+BG1 = "#2C3E50"
 TEXT1 = "#FDFEFE"
 COPY1 = "¡Bienvenidos a PJ Tech!" 
 
