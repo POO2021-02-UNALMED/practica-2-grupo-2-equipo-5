@@ -94,7 +94,7 @@ class Servicio:
         return cls._servicios
     
     @classmethod
-    def seTiposDeProductos(cls, servicios:dict) -> None:
+    def setServicios(cls, servicios:dict) -> None:
         """
             Método de clase para establecer todos
             los servicios registrados en el sistema
