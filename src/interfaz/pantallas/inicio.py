@@ -118,23 +118,22 @@ class Inicio(tk.Frame, tk.Tk):
     def inicializarFrames(self):
         """Funcion para inicializar los seis frames anidados en la ventana"""
 
-
         self._p1 = tk.Frame(self, bg = style.BACKGROUND_FRAMES)
         self._p1.pack(side = tk.LEFT, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
         
         self._p2 = tk.Frame(self, bg = style.BACKGROUND_FRAMES)
         self._p2.pack(side = tk.LEFT, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
-        self._p3 = tk.Frame(self._p1, bg = style.BACKGROUND_P)
+        self._p3 = tk.Frame(self._p1, bg = style.BACKGROUND_FRAMES)
         self._p3.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
-        self._p4 = tk.Frame(self._p1, bg = style.BACKGROUND_P)
+        self._p4 = tk.Frame(self._p1, bg = style.BACKGROUND_FRAMES)
         self._p4.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
-        self._p5 = tk.Frame(self._p2, bg = style.BACKGROUND_P)
+        self._p5 = tk.Frame(self._p2, bg = style.BACKGROUND_FRAMES)
         self._p5.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
-        self._p6 = tk.Frame(self._p2, bg = style.BACKGROUND_P)
+        self._p6 = tk.Frame(self._p2, bg = style.BACKGROUND_FRAMES)
         self._p6.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
         # Se captura el evento de el frame p5 para cambiar la informacion
@@ -159,46 +158,48 @@ class Inicio(tk.Frame, tk.Tk):
 
         imagen_sistema = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/capturas_sistema/sistema1.jfif').resize((300,225), Image.ANTIALIAS))
         
-        self.imagenesSistema = tk.Label(self._p4)
+        self.imagenesSistema = tk.Label(self._p4, pady=20)
         self.imagenesSistema.image = imagen_sistema
         self.imagenesSistema.configure(image = imagen_sistema)
-        self.imagenesSistema.grid(row = 1, column=0)
+        self.imagenesSistema.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
         
-        tk.Button(self._p4, text="Ingresar", height=5, width=15).grid(row = 2, column = 0)
+        tk.Button(self._p4, text="Ingresar", height=5, width=15, font=("Arial", 24)).pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
         self.imagenesSistema.bind('<Enter>', self.cambiarImagenesSistema)
     
     def inicializarWidgetsVentana3(self):
         """ Inicializar frame con los datos de los desarrolladores"""
+        
+        labelgeneral = tk.Label(self._p5, justify=tk.CENTER)
+        labelgeneral.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 10)
 
-        self._nombre = tk.Label(
-            self._p5,
-            text = self.VALUES[self._numeroInicio]["name"],
-            bg = "gray" 
-        )
+        self._nombre = tk.Label(labelgeneral, text = self.VALUES[self._numeroInicio]["name"], bg = "gray", justify=tk.CENTER)
         self._nombre.grid(row = 0, column = 0, columnspan = 2, sticky = tk.EW)
 
-        contacto = tk.Label(self._p5, text = "Contacto")
-        contacto.grid(row = 1, column = 0)
+        contacto = tk.Label(labelgeneral, text = "Contacto", justify=tk.CENTER)
+        contacto.grid(row = 1, column = 0, sticky=tk.EW)
 
-        self._numeroPhone = tk.Label(self._p5, text =self.VALUES[self._numeroInicio]["phone"] )
-        self._numeroPhone.grid(row=1, column=1)
+        self._numeroPhone = tk.Label(labelgeneral, text =self.VALUES[self._numeroInicio]["phone"], justify=tk.LEFT)
+        self._numeroPhone.grid(row=1, column=1, sticky=tk.EW)
 
-        email = tk.Label(self._p5, text="Email")
-        email.grid(row=2, column=0)
+        email = tk.Label(labelgeneral, text="Email", justify=tk.CENTER)
+        email.grid(row=2, column=0, sticky=tk.EW)
 
-        self._correo = tk.Label(self._p5, text=self.VALUES[self._numeroInicio]["email"])
-        self._correo.grid(row=2, column=1)
+        self._correo = tk.Label(labelgeneral, text=self.VALUES[self._numeroInicio]["email"], justify=tk.LEFT)
+        self._correo.grid(row=2, column=1, sticky=tk.EW)
 
-        op = tk.Label(self._p5, text="Ocupacion")
-        op.grid(row=3, column=0)
+        op = tk.Label(labelgeneral, text="Ocupacion", justify=tk.CENTER)
+        op.grid(row=3, column=0, sticky=tk.EW)
 
-        self._ocupacion = tk.Label(self._p5, text="Estudiante de Ingenieria de Sistemas")
-        self._ocupacion.grid(row=3, column=1)
+        self._ocupacion = tk.Label(labelgeneral, text="Estudiante de Ingenieria de Sistemas", justify=tk.LEFT)
+        self._ocupacion.grid(row=3, column=1, sticky=tk.EW)
 
-        unal = tk.Label(self._p5, text="Universidad")
-        unal.grid(row=4, column=0)
-        self._universidad = tk.Label(self._p5, text="Unal").grid(row=4, column=1)
+        unal = tk.Label(labelgeneral, text="Universidad", justify=tk.CENTER)
+        unal.grid(row=4, column=0, sticky=tk.EW)
+        self._universidad = tk.Label(labelgeneral, text="Unal", justify=tk.LEFT).grid(row=4, column=1, sticky=tk.EW)
+        
+        # Expandimos los labels dentro del frame anidado 3
+        labelgeneral.columnconfigure(0, weight=1)
 
         self._numeroPhone.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
         self._correo.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
@@ -214,31 +215,37 @@ class Inicio(tk.Frame, tk.Tk):
     
     def inicializarWidgetsVentana4(self):
         """ Se cargan las imagenes de los desarroladores"""
-
+        
+        labelgeneralImagenes = tk.Label(self._p5, justify=tk.CENTER)
+        labelgeneralImagenes.pack(side = tk.TOP, fill = tk.BOTH, expand = True, padx = 10, pady = 30)
+        
         python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen1.png').resize((300,225), Image.ANTIALIAS))
 
-        self.imagen1 = tk.Label(self._p6)
+        self.imagen1 = tk.Label(labelgeneralImagenes)
         self.imagen1.image = python_imagen1
         self.imagen1.configure(image = python_imagen1)
-        self.imagen1.grid(row = 0, column=0)
+        self.imagen1.grid(row = 0, column=0, sticky=tk.NSEW)
 
         python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen2.png').resize((300,225), Image.ANTIALIAS))
 
-        self.imagen2 = tk.Label(self._p6)
+        self.imagen2 = tk.Label(labelgeneralImagenes)
         self.imagen2.image = python_imagen2
         self.imagen2.configure(image = python_imagen2)
-        self.imagen2.grid(row = 0, column=1)
+        self.imagen2.grid(row = 0, column=1, sticky=tk.NSEW)
 
         python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen3.png').resize((300,225), Image.ANTIALIAS))
 
-        self.imagen3 = tk.Label(self._p6)
+        self.imagen3 = tk.Label(labelgeneralImagenes)
         self.imagen3.image = python_imagen3
         self.imagen3.configure(image = python_imagen3)
-        self.imagen3.grid(row = 1, column=0)
+        self.imagen3.grid(row = 1, column=0, sticky=tk.NSEW)
 
         python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen4.png').resize((300,225), Image.ANTIALIAS))
 
-        self.imagen4 = tk.Label(self._p6)
+        self.imagen4 = tk.Label(labelgeneralImagenes)
         self.imagen4.image = python_imagen4
         self.imagen4.configure(image = python_imagen4)
-        self.imagen4.grid(row = 1, column=1)
+        self.imagen4.grid(row = 1, column=1, sticky=tk.NSEW)
+        
+        labelgeneralImagenes.columnconfigure(0, weight=1)
+        labelgeneralImagenes.rowconfigure(0, weight=1)
