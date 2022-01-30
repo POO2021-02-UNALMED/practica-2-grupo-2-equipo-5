@@ -101,7 +101,7 @@ class Cliente:
         """
         cls._clientes = clientes
 
-    def __str__(self) -> None:
+    def __str__(self) -> str:
         """
             Método toString
         """

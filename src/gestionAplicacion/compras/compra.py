@@ -1,4 +1,9 @@
 class Compra:
+    """
+        Clase encargada de administrar toda la informacion
+        y funcionalidades relacionadas con las compras
+        de la tienda
+    """
 
     # diccionario para guardar todas las compras registradas en el sistema
     _compras = {}
@@ -6,7 +11,14 @@ class Compra:
     #Indice para tener identificador unico de las compras
     _index_codigo_compra = 0
 
-    def __init__(self, descripcion = None, descuento = None):
+    def __init__(self, descripcion:str = None, descuento:float = None) -> None:
+        """
+            Constructor de la clase Compra
+
+            Args:
+                descripcion (str, opcional): Descripción de la compra. Defaults to None.
+                descuento (float, opcional): Descuento aplicado a la compra. Defaults to None.
+        """
 
         # Atributos
         self._codigo_compra = Compra._index_codigo_compra
@@ -22,39 +34,52 @@ class Compra:
         # Se guarda el objeto en un diccionario con su identificador como llave
         Compra._compras[self._codigo_compra] = self
 
-    # Método para asiganrle cliente a una compra
-    def asignarCliente(self, cliente):
-        self._cliente = cliente
-
     # Métodods get
-    def getCodigoCompra(self):
+    def getCodigoCompra(self) -> int:
         return self._codigo_compra
 
-    def getDescripcion(self):
+    def getDescripcion(self) -> str:
         return self._descripcion
 
-    def getDescuento(self):
+    def getDescuento(self) -> float:
         return self._descuento
 
+    def getCliente(self) :
+        return self._cliente
+
     # Métodos set
-    def setDescripcion(self, descripcion):
+    def setDescripcion(self, descripcion:str) -> None:
         self._descripcion = descripcion
 
-    def setDescuento(self, descuento):
+    def setDescuento(self, descuento:float) -> None:
         self._descuento = descuento
+    
+    def setCliente(self, cliente) -> None:
+        """
+            Método para asiganrle cliente a una compra
+        """
+        self._cliente = cliente
 
-    # Método de clase para obtener tas las compra registradss en el sistema
     @classmethod
-    def getClientes(cls):
+    def getClientes(cls) -> dict:
+        """
+            Método de clase para obtener todas 
+            las compra registradss en el sistema
+        """
         return cls._compras
 
-    # Método de clase para establecer todas las compras registradas en el sistema
     @classmethod
-    def setClientes(cls, compras):
+    def setClientes(cls, compras:dict) -> None:
+        """
+            Método de clase para establecer todas 
+            las compras registradas en el sistema
+        """
         cls._compras = compras
 
-    # Método toString
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
         return    "Codigo compra: " + str(self.getCodigoCompra()) + "\n" \
                 + "Descripcion: "   + self.getDescripcion() + "\n" \
                 + "Descuento: "     + str(self.getDescuento()) + "\n"

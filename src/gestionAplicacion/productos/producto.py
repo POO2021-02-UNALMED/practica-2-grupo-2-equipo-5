@@ -1,7 +1,3 @@
-from gestionAplicacion.productos.detalle_producto import DetalleProducto
-from gestionAplicacion.productos.tipo_producto import TipoProducto
-from gestionAplicacion.productos.producto import Producto
-
 class Producto:
     """
         Clase encargada de administrar toda la informacion
@@ -71,7 +67,7 @@ class Producto:
         """
         return self._detalles_productos
 
-    def getTipoProducto(self) -> TipoProducto:
+    def getTipoProducto(self):
         """
             Retorna el tipo de producto 
             asociado a ese producto
@@ -98,25 +94,23 @@ class Producto:
     def setDescripcion(self, descripcion:str) -> None:
         self._descripcion = descripcion
 
-    def agregarDetallesProducto(self, detalle_producto:DetalleProducto) -> None:
+    def agregarDetallesProducto(self, detalle_producto) -> None:
         """
             Metodo para agregar un detalle de 
             producto asociado a este producto
         """
         if self._detalles_productos == None:
             self._detalles_productos = {}
-        if isinstance(detalle_producto, DetalleProducto):
-            self._detalles_productos[detalle_producto.getId()] = detalle_producto
+        self._detalles_productos[detalle_producto.getId()] = detalle_producto
 
-    def setTipoProducto(self, tipo_producto:TipoProducto) -> None:
+    def setTipoProducto(self, tipo_producto) -> None:
         """
             Metodo para asiganr un 
             tipo de producto a este producto
         """
-        if isinstance(tipo_producto, TipoProducto):
-            self._tipo_producto = tipo_producto
+        self._tipo_producto = tipo_producto
 
-    def agregarProductoCombo(self, producto:Producto) -> None:
+    def agregarProductoCombo(self, producto) -> None:
         """
             Metodo para agregar un 
             producto en caso de formar combos
@@ -143,6 +137,9 @@ class Producto:
         cls._productos = productos
 
     def __str__(self)->str:
+        """
+            Método toString
+        """
         return   "Codigo: "              + str(self._codigo) + "\n" \
                + "Nombre: "              + self._nombre + "\n" \
                + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
