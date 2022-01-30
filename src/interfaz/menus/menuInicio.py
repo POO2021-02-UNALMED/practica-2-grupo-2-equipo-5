@@ -9,6 +9,3 @@ class MenuInicio(tk.Menu):
         self.add_cascade(menu = inicio, label = "Inicio")
         inicio.add_command(label = "Descripcion del sistema")
         inicio.add_command(label = "Salir")
-        
-        
-    

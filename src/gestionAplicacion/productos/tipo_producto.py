@@ -1,90 +1,95 @@
-
 from gestionAplicacion.productos.producto import Producto
 
-
 class TipoProducto:
-    _Tipo_Producto = {}
-    def __init__(self, codigo:int, nombre:str, impuesto:float) -> None:
+    """
+        Clase encargada de administrar toda la informacion
+        y funcionalidades relacionadas con los tipos de 
+        productos de la tienda
+    """
+
+    # diccionario para guardar todos los tipos productos registrados en el sistema
+    _tipos_de_productos = {}
+
+    # Indice para tener identificador unico de los tipos de poroductos
+    _index_codigo = 0
+
+    def __init__(self, nombre:str, impuesto:float) -> None:
         """
-        Args:
-            codigo (int): Código del producto
-            nombre (str): Nombre del producto
-            impuesto (float): impuesto del producto
-        """        
-        self._codigo = codigo
+            Constructor de la clase TipoProducto
+
+            Args:
+                nombre (str): Nombre del producto
+                impuesto (float): impuesto del producto
+        """
+
+        # Atributos
+        self._codigo = TipoProducto._index_codigo
         self._nombre = nombre
         self._impuesto = impuesto
-        self._Productos = []
 
+        # Relacion con Producto
+        self._productos = None
+
+        # Aumentar el indice del identificador
+        TipoProducto._index_codigo += 1
+
+        # Se guarda el objeto en un diccionario con su identificador como llave
         TipoProducto._Tipo_Producto[self._codigo] = self
 
-        def getCodigo(self)->int:
-            """Retorna el código del tipo producto"""
-            return self._codigo
+    # Metodos get
+    def getCodigo(self) -> int:
+        return self._codigo
 
-        
-        def getNombre(self)->str:
-            """Retorna el nombre del tipo de producto"""
-            return self._nombre
-        
-        def setNombre(self, nombre:str)->None:
-            """Cambia en el nombre del objecto
+    def getNombre(self) -> str:
+        return self._nombre
 
-            Args:
-                nombre (str): cambia el nombre del producto
-            """
-            self._nombre = nombre
-        
-        def getImpuesto(self)->float:
-            """Retorna el numero del impuesto"""
-            return self._impuesto
-        
-        def setImpuesto(self, impuesto:float)->None:
-            """Cambia el impuesto de los valores
+    def getImpuesto(self) -> float:
+        return self._impuesto
 
-            Args:
-                impuesto (float): Nuevo impuesto por el que se va a cambiar
-            """            
-            self._impuesto = impuesto
-        
-        def getProductos(self)->list:
-            """Retorna una lista con los productos asociado al tipo producto
-            """            
-            return self._Productos
-         
-        def setProductos(self, productos_list:list)->None:
-            """Cambia el producto de la lista
+    def getProductos(self) -> dict:
+        """
+            Retorna los productos asociados a
+            este tipo de producto
+        """
+        return self._productos
+    
+    # Metodos set
+    def setNombre(self, nombre:str) -> None:
+        self._nombre = nombre
+    
+    def setImpuesto(self, impuesto:float) -> None:
+        self._impuesto = impuesto
+    
+    def agregarProducto(self, producto:Producto) -> None:
+        """
+            Metodo para agregar un Producto
+            asociado a este tipo de producto
+        """
+        if self._productos == None:
+            self._productos = {}
+        if isinstance(producto, Producto):
+            self._productos[producto.getCodigo()] = producto
 
-            Args:
-                productos_list (list): nueva lista de productos.
-            """             
-            self._Productos = productos_list
-        
-        @classmethod
-        def getTipoProducto(cls)-> dict:
-            """Retorna un diccionario con todos los valores de Tipo de Producto, donde la clave es codigo y el valor es el objecto"""
-            return cls._Tipo_Producto
-        
-        @classmethod
-        def setTipoProductos(cls, tipo_producto:dict):
-            """Cambia el diccionario donde se va a guardar todos los Tipos Productos
-
-            Args:
-                tipo_producto (dict): Nuevo diccionario de tipo producto
-            """            
-            cls._TipoProducto = tipo_producto
-        
-        def agregarProducto(self, producto:Producto)->None:
-            """Agrega un producto nuevo
-
-            Args:
-                producto (Producto): pruducto a agregar
-            """            
-            if isinstance(producto, Producto):
-                self._Productos.append(producto)
-        
-        def __str__(self)->str:
-             return   "Codigo"                + str(self._codigo) + "\n" \
-                    + "Nombre: "              + self._nombre + "\n" \
-                    + "Impuesto: "              + self.impuesto + "\n" \
-        
+    @classmethod
+    def getTiposDeProductos(cls) -> dict:
+        """
+            Método de clase para obtener todos
+            los tipos de productos registrados en el sistema
+        """
+        return cls._tipos_de_productos
+    
+    @classmethod
+    def seTiposDeProductos(cls, tipos_de_productos:dict) -> None:
+        """
+            Método de clase para establecer todos
+            los tipos de productos registrados en el sistema
+        """
+        cls._tipos_de_productos = tipos_de_productos
+    
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return   "Codigo"      + str(self._codigo) + "\n" \
+               + "Nombre: "    + str(self._nombre) + "\n" \
+               + "Impuesto: "  + str(self.impuesto) + "\n" 

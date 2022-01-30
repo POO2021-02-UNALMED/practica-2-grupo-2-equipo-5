@@ -1,7 +1,7 @@
 import tkinter as tk
-from estilos import styles as style
-from pantallas.inicio import Inicio
-from menus.menuInicio import MenuInicio
+from interfaz.estilos import styles as style
+from interfaz.pantallas.inicio import Inicio
+from interfaz.menus.menuInicio import MenuInicio
 
 class Manager(tk.Tk):
 

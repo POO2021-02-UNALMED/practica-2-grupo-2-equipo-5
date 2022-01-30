@@ -1,5 +1,5 @@
 import tkinter as tk
-from estilos import styles as style
+from interfaz.estilos import styles as style
 from PIL import Image, ImageTk
 
 class Inicio(tk.Frame, tk.Tk):

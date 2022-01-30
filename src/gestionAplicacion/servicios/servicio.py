@@ -1,59 +1,110 @@
 class Servicio:
+    """
+        Clase encargada de administrar toda la informacion
+        y funcionalidades relacionadas con los servicios 
+        de la tienda
+    """
+
+    # diccionario para guardar todos los servicios registrados en el sistema
+    _servicios = {}
+
+    # Indice para tener identificador unico
     _count = 0
-    _Servicios = {}
+    
     def __init__(self, precio:float, fecha_servicio:str, descripcion:str) -> None:
         """
-        Args:
-            precio (float): precio del servicio
-            fecha_servicio (str): fecha del servicio
-            descripcion (str):descripción del servicio
-        """        
+            Constructor de la clase Servicio
 
+            Args:
+                precio (float): precio del servicio
+                fecha_servicio (str): fecha del servicio
+                descripcion (str): descripción del servicio
+        """
+
+        # Atributos
+        self._id = Servicio._count
         self._precio = precio
         self._fecha_servicio = fecha_servicio
         self._descripcion = descripcion
 
-        self._id = Servicio._count
+        # Relacion con CompraServicio
+        self._compra_servicios = None
+
+        # Relacion con TipoServicio
+        self._tipo_servicio = None
+
+        # Relacion con Tecnico que revisa
+        self._tecnico_revisa = None
+
+        # Aumentar el indice del identificador
         Servicio._count += 1
-        Servicio._Servicios[self._id] = self
+
+        # Se guarda el objeto en un diccionario con su identificador como llave
+        Servicio._servicios[self._id] = self
 
     #Métodos get
-    def getPrecio(self)->float:
+    def getId(self) -> int:
+        return self._id
+
+    def getPrecio(self) -> float:
         return self._precio
     
-    def getFechaServicio(self)->str:
+    def getFechaServicio(self) -> str:
         return self._fecha_servicio
     
-    def getDescripcion(self)->str:
+    def getDescripcion(self) -> str:
         return self._descripcion
 
-    def getId(self)->int:
-        return self._id
-    
-    @classmethod
-    def  getServicios(cls)->dict:
-        return cls._Servicios
-    
-    @classmethod
-    def getCount(cls)->int:
-        return cls._count
+    def getCompraServicios(self):
+        return self._compra_servicios
 
-    #Métodos setters
-    def setPrecio(self, precio:float)->None:
+    def getTipoServicio(self):
+        return self._tipo_servicio
+
+    def getTecnicoRevisa(self):
+        return self._tecnico_revisa
+
+    #Métodos set
+    def setPrecio(self, precio:float) -> None:
         self._precio = precio
     
-    def setFechaServiio(self, fecha_servicio:str)->None:
+    def setFechaServiio(self, fecha_servicio:str) -> None:
         self._fecha_servicio = fecha_servicio
     
-    def setDescripcion(self, descripcion:str)->None:
+    def setDescripcion(self, descripcion:str) -> None:
         self._descripcion = descripcion
+
+    def setCompraServicios(self, compra_servicios) -> None:
+        self._compra_servicios = compra_servicios
+
+    def setTipoServicio(self, tipo_servicio) -> None:
+        self._tipo_servicio = tipo_servicio
+
+    def setTecnicoRevisa(self, tecnico_revisa) -> None:
+        self._tecnico_revisa = tecnico_revisa
+
+    @classmethod
+    def getServicios(cls) -> dict:
+        """
+            Método de clase para obtener todos
+            los servicios registrados en el sistema
+        """
+        return cls._servicios
     
     @classmethod
-    def setServicios(cls, servicios)->None:
-        cls._Servicios = servicios
+    def seTiposDeProductos(cls, servicios:dict) -> None:
+        """
+            Método de clase para establecer todos
+            los servicios registrados en el sistema
+        """
+        cls._servicios = servicios
     
-    def __str__(self)->str:
-        return  "id: "                + str(self._id) + "\n" \
-                + "precio: "        + str(self._precio) + "\n" \
-                + "fecha de servicio: " + self._fecha_servicio + "\n" \
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return    "Id Servicio: "       + str(self._id) + "\n" \
+                + "Precio: "            + str(self._precio) + "\n" \
+                + "Fecha de servicio: " + str(self._fecha_servicio) + "\n" \
+                + "Descripción: "       + str(self._descripcion) + "\n"
     

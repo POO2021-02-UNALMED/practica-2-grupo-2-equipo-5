@@ -1,135 +1,147 @@
-from itertools import product
-from detalle_producto import DatalleProductos
-
-
 class Producto:
-    _TodosProductos = {}
-    def __init__(self, codigo:int, nombre:str, fecha_ingreso:str, precio:float, descripcion:str=None) -> None:
-        """Inicializador de la clase Producto
+    """
+        Clase encargada de administrar toda la informacion
+        y funcionalidades relacionadas con los productos
+        de la tienda
+    """
 
-        Args:
-            codigo (int): Código del producto
-            nombre (str): Nombre del producto
-            fecha_ingreso (str): Fecha de ingreso del producto
-            precio (float): Precio del producto
-            descripcion (str, optional): Descripción del producto. Defaults to None.
+    # diccionario para guardar todos los productos registrados en el sistema
+    _productos = {}
+
+    # Indice para tener identificador unico de los productos
+    _index_codigo = 0
+
+    def __init__(self, nombre:str, fecha_ingreso:str, precio:float, descripcion:str=None) -> None:
         """
-        self._codigo = codigo
+            Constructor de la clase Producto
+
+            Args:
+                nombre (str): Nombre del producto
+                fecha_ingreso (str): Fecha de ingreso del producto
+                precio (float): Precio del producto
+                descripcion (str, opcional): Descripción del producto. Defaults to None.
+        """
+
+        # Atributos
+        self._codigo = Producto._index_codigo
         self._nombre = nombre
         self._fecha_ingreso = fecha_ingreso
         self._precio = precio
         self._descripcion = descripcion
 
-        self._Detalle_Producto = []
-        Producto._TodosProductos[self._codigo] = self
+        # Relacion con DetalleProducto
+        self._detalles_productos = None
 
-        def getCodigo(self)->int:
-            """Retorna el código del producto"""    
-            return self._codigo     
+        # Relacion con TipoProducto
+        self._tipo_producto = None
 
-        
-        def getFechaIngreso(self)->str:
-            return self._fecha_ingreso
-        
-        def setFechaIngreso(self, fecha:str)->None:
-            """Cambia la fecha 
+        # Relacion con Productos (En caso de ser un combo)
+        self._productos_combo = None
 
-            Args:
-                fecha (str): Nueva fecha a cambiar
-            """
-            self._fecha_ingreso = fecha
-        
-        def getPrecio(self)->float:
-            """Retorna el precio"""
-            return self._precio
-        
-        def setPrecio(self, nuevo_precio:float)->None:
-            """Cambia el precio del objecto
+        # Aumentar el indice del identificador
+        Producto._index_codigo += 1
 
-            Args:
-                nuevo_precio (float): nuevo precio del objecto.
-            """
-            self._precio = nuevo_precio
-        
-        def getDescpricion(self)->str:
-            """Retorna la descripción del proyecto"""
-            return self._descripcion
-        
-        def setDescripcion(self, nueva_des:str)->None:
-            """Cambia la descripción del producto 
+        # Se guarda el objeto en un diccionario con su identificador como llave
+        Producto._productos[self._codigo] = self
+    
+    # Metodos get
+    def getCodigo(self) -> int:
+        return self._codigo
 
-            Args:
-                nueva_des (str): Es la nueva descripcion del producto
-            """
-            self._descripcion = nueva_des
-        
-        def getProductos(self)->list:
-            """Retorna la lista de los productos"""
-            return self._Productos 
-        
-        def setProductos(self, list_products:list)->None:
-            """Cambia la lista de productos 
+    def getNombre(self) -> str:
+        return self._nombre 
 
-            Args:
-                list_products (list): Nueva lista de los productos.
-            """            
-            self._Productos = list_products
-        
-        def getDetalleProducto(self)->list:
-            """Retorna una lista de productos asociados al objecto"""        
-            return self._Deatalle_Producto
-        
-        def setDetalleProducto(self, productos:list)->None:
-            """Se le asiga una lista de objectos tipo ProOk 
-            Args:
-                productos (list): [description]
-            """        
-            self._Deatalle_Producto = productos
-        
-        
-        @classmethod
-        def getTodosProductos(cls)->dict:
-            """Retorna un diccionario con todos los Productos creados, donde la llave es la cédula y la valor el objecto"""
-            return cls._TodosProductos
-        
-        @classmethod
-        def setTodosProductos(cls, dict_productos:dict)->None:
-            """Cambia el atributo de clase, donde está guardado todos los productos
+    def getFechaIngreso(self) -> str:
+        return self._fecha_ingreso
+    
+    def getPrecio(self) -> float:
+        return self._precio
 
-            Args:
-                dict_productos (dict): Recibe un diccionario donde la llave es la cédulas y el valor es el objecto.
-            """
-            cls._TodosProductos = dict_productos
-        
-        def agregarProducto(self, producto:Producto)->None:
-            """Agraga un nuevo producto, es muy apropiado para hacer combos 
+    def getDescripcion(self) -> str:
+        return self._descripcion
 
-            Args:
-                producto (Producto): > Producto que componen los combos
-            """            
-            if isinstance(producto, Producto):
-                self._Producto.append(producto)
-        
-        def agregarDetalleProductos(self, detalle_producto:DatalleProductos)->None:
-            """Se agraga un tipo de detalle producto
+    def getDetallesProducto(self) -> dict:
+        """
+            Retorna los detalles de 
+            los productos asociados a una compra
+        """
+        return self._detalles_productos
 
-            Args:
-                detalle_producto (DatalleProductos): se agrega el nuevo producto, 
-            """            
-            if isinstance(detalle_producto, DatalleProductos):
-                self._Detalle_Producto.append(detalle_producto)
+    def getTipoProducto(self):
+        """
+            Retorna el tipo de producto 
+            asociado a ese producto
+        """
+        return self._tipo_producto
 
+    def getProductos(self) -> dict:
+        """
+            Retorna los productos del combo, 
+            en caso de ser un combo
+        """
+        return self._productos_combo 
 
-        def __str__(self)->str:
-             return   "Codigo"                + str(self._codigo) + "\n" \
-                    + "Nombre: "              + self._nombre + "\n" \
-                    + "Precio: "              + self._precio + "\n" \
-                    + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
-        
+    # Metodo set
+    def setNombre(self, nombre:str) -> None:
+        self._nombre = nombre
 
+    def setFechaIngreso(self, fecha:str) -> None:
+        self._fecha_ingreso = fecha
 
+    def setPrecio(self, precio:float) -> None:
+        self._precio = precio
 
-        
-        
+    def setDescripcion(self, descripcion:str) -> None:
+        self._descripcion = descripcion
 
-        
+    def agregarDetallesProducto(self, detalle_producto) -> None:
+        """
+            Metodo para agregar un detalle de 
+            producto asociado a este producto
+        """
+        if self._detalles_productos == None:
+            self._detalles_productos = {}
+        self._detalles_productos[detalle_producto.getId()] = detalle_producto
+
+    def setTipoProducto(self, tipo_producto) -> None:
+        """
+            Metodo para asiganr un 
+            tipo de producto a este producto
+        """
+        self._tipo_producto = tipo_producto
+
+    def agregarProductoCombo(self, producto) -> None:
+        """
+            Metodo para agregar un 
+            producto en caso de formar combos
+        """
+        if self._productos_combo == None:
+            self._productos_combo = {}
+        if isinstance(producto, Producto):
+            self._productos_combo[producto.getCodigo()] = producto
+
+    @classmethod
+    def getProductos(cls) -> dict:
+        """
+            Método de clase para obtener todos
+            los productos registrados en el sistema
+        """
+        return cls._productos
+    
+    @classmethod
+    def setProductos(cls, productos:dict) -> None:
+        """
+            Método de clase para establecer todos
+            los productos registrados en el sistema
+        """
+        cls._productos = productos
+
+    def __str__(self)->str:
+        """
+            Método toString
+        """
+        return   "Codigo: "              + str(self._codigo) + "\n" \
+               + "Nombre: "              + str(self._nombre) + "\n" \
+               + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
+               + "Precio: "              + str(self._precio) + "\n" \
+               + "Descripcion: "         + str(self._descripcion)

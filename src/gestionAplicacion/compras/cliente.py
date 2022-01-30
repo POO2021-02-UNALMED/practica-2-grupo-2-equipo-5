@@ -1,13 +1,29 @@
+from gestionAplicacion.compras.compra import Compra
+
 class Cliente:
+    """
+        Clase encargade de administrar toda la informacion
+        y funcionalidades relacionadas con los clientes de 
+        la tienda
+    """
 
     # diccionario para guardar todos los clientes registrados en el sistema
     _clientes = {}
 
-    #Indice para tener identificador unico de los clientes
+    # Indice para tener identificador unico de los clientes
     _index_cedula = 0
 
-    def __init__(self, nombre, fecha_nacimiento, direccion = None, telefono = None):
+    def __init__(self, nombre:str, fecha_nacimiento:str, direccion:str = None, telefono:int = None) -> None:
+        """
+            Constructor de la clase Cliente
 
+            Args:
+                nombre (str): Nombre del cliente
+                fecha_nacimiento (str, opcional): Fecha de nacimiento cliente
+                direccion (str, opcional): Direccion del cliente. Defaults to None.
+                telefono (int, opcional): Teefono del cliente. Defaults to None.
+        """
+        
         # Atributos
         self._cedula = Cliente._index_cedula
         self._nombre = nombre
@@ -24,58 +40,73 @@ class Cliente:
         # Se guarda el objeto en un diccionario con su identificador como llave
         Cliente._clientes[self._cedula] = self
 
-    # Método para agregarle compras a un cliente
-    def agregarCompra(self, compra):
-        if self._compras == None:
-            self._compras = []
-        self._compras.append(compra)
-
     # Métodos get
-    def getCedula(self):
+    def getCedula(self) -> int:
         return self._cedula
 
-    def getNombre(self):
+    def getNombre(self) -> str:
         return self._nombre
 
-    # Aca hace falta pones una excepcion cuando sean nulos
-    def getDirección(self):
+    def getDirección(self) -> str:
         return self._direccion
 
-    # Aca hace falta pones una excepcion cuando sean nulos
-    def getTelefono(self):
+    def getTelefono(self) -> int:
         return self._telefono
 
-    def getFechaNacimiento(self):
+    def getFechaNacimiento(self) -> str:
         return self._fecha_nacimiento
 
+    def getCompras(self) -> dict:
+        """
+            Metodo para devolver un diccionario con 
+            las compras de un cliente
+        """
+        return self._compras
+
     # Métodos set
-    def setNombre(self, nombre):
+    def setNombre(self, nombre: str) -> None:
         self._nombre = nombre
 
-    def setDireccion(self, direccion):
+    def setDireccion(self, direccion:str) -> None:
         self._direccion = direccion
 
-    def setTelefono(self, telefono):
+    def setTelefono(self, telefono:int) -> None:
         self._telefono = telefono
 
-    def setFechaNacimiento(self, fecha_nacimiento):
+    def setFechaNacimiento(self, fecha_nacimiento:str) -> None:
         self._fecha_nacimiento = fecha_nacimiento
 
-    # Método de clase para obtener todos los clientes registrados en el sistema
+    def agregarCompra(self, compra:Compra) -> None:
+        """
+            Metodo para agregarle una compra a un cliente
+        """
+        if self._compras == None:
+            self._compras = {}
+        if isinstance(compra, Compra):
+            self._compras[compra.getCodigoCompra()] = compra
+
     @classmethod
-    def getClientes(cls):
+    def getClientes(cls) -> dict:
+        """
+            Método de clase para obtener todos
+            los clientes registrados en el sistema
+        """
         return cls._clientes
 
-    # Método de clase para establecer todos los clientes registrados en el sistema
     @classmethod
-    def setClientes(cls, clientes):
+    def setClientes(cls, clientes:dict) -> None:
+        """
+            Método de clase para establecer todos
+            los clientes registrados en el sistema
+        """
         cls._clientes = clientes
 
-    # Método toString
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
         return    "Cédula: "              + str(self.getCedula()) + "\n" \
-                + "Nombre: "              + self.getNombre() + "\n" \
-                + "Direccion: "           + self.getDirección() + "\n" \
+                + "Nombre: "              + str(self.getNombre()) + "\n" \
+                + "Direccion: "           + str(self.getDirección()) + "\n" \
                 + "Telefono: "            + str(self.getTelefono()) + "\n" \
-                + "Fecha de nacimiento: " + self.getFechaNacimiento() + "\n"
-                
+                + "Fecha de nacimiento: " + str(self.getFechaNacimiento()) + "\n"
