@@ -1,7 +1,3 @@
-"""-------------------------------------------------"""
-from tecnico import Tecnico
-from cajero import Cajero
-
 class Empleado():
     
     # diccionario para guardar todas las empleados registradas en el sistema

@@ -1,4 +1,4 @@
-from compra import Compra
+from gestionAplicacion.compras.compra import Compra
 
 class CompraProductos(Compra):
 

@@ -1,5 +1,3 @@
-"""-----------------------------"""
-
 class TipoServicio():
     
     # Se crea el contructor

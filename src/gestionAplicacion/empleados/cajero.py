@@ -1,5 +1,4 @@
-"""Se importan las librerías y documentos que vamos  utilizar"""
-from empleado import Empleado
+from gestionAplicacion.empleados.empleado import Empleado
 
 class Cajero(Empleado):
 

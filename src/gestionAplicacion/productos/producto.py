@@ -1,5 +1,4 @@
-from itertools import product
-from detalle_producto import DatalleProductos
+from gestionAplicacion.productos.detalle_producto import DetalleProductos
 
 
 class Producto:
@@ -110,13 +109,13 @@ class Producto:
             if isinstance(producto, Producto):
                 self._Producto.append(producto)
         
-        def agregarDetalleProductos(self, detalle_producto:DatalleProductos)->None:
+        def agregarDetalleProductos(self, detalle_producto:DetalleProductos)->None:
             """Se agraga un tipo de detalle producto
 
             Args:
                 detalle_producto (DatalleProductos): se agrega el nuevo producto, 
             """            
-            if isinstance(detalle_producto, DatalleProductos):
+            if isinstance(detalle_producto, DetalleProductos):
                 self._Detalle_Producto.append(detalle_producto)
 
 

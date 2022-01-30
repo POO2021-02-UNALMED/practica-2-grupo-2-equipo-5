@@ -1,6 +1,4 @@
-
 from gestionAplicacion.productos.producto import Producto
-
 
 class TipoProducto:
     _Tipo_Producto = {}

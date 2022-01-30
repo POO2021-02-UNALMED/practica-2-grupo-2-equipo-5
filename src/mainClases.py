@@ -1,6 +1,6 @@
-from .empleados.empleado import Empleado
-from .empleados.tecnico import Tecnico
-from .empleados.cajero import Cajero
+from gestionAplicacion.empleados.empleado import Empleado
+from gestionAplicacion.empleados.tecnico import Tecnico
+from gestionAplicacion.empleados.cajero import Cajero
 
 if __name__ == "__main__":
     
