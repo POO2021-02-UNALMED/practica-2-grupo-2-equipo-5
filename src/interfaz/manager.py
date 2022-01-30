@@ -30,4 +30,4 @@ class Manager(tk.Tk):
     def mostrarFrame(self, contenedor):
         ventana =self.ventanas[contenedor]
         ventana.tkraise()
-        
+    
