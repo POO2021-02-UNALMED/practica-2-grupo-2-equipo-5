@@ -144,4 +144,4 @@ class Producto:
                + "Nombre: "              + str(self._nombre) + "\n" \
                + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
                + "Precio: "              + str(self._precio) + "\n" \
-               + "Descripcion: "         + str(self._descripcion)
+               + "Descripcion: "         + str(self._descripcion) + "\n"

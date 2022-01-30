@@ -69,6 +69,22 @@ class TipoServicio():
         if isinstance(servicio, Servicio):
             self._servicios[servicio.getId()] = servicio
 
+    @classmethod
+    def getTiposServicio(cls) -> dict:
+        """
+            Método de clase para obtener todos 
+            los tipos de servicio registradss en el sistema
+        """
+        return cls._tipos_de_servicios
+
+    @classmethod
+    def setTiposServicio(cls, tipos_de_servicio:dict) -> None:
+        """
+            Método de clase para establecer todos 
+            los tipos de servicio registrados en el sistema
+        """
+        cls._tipos_de_servicios = tipos_de_servicio
+
     def __str__(self) -> str:
         """
             Método toString

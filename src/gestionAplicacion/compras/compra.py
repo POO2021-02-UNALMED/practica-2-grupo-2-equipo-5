@@ -61,7 +61,7 @@ class Compra:
         self._cliente = cliente
 
     @classmethod
-    def getClientes(cls) -> dict:
+    def getCompras(cls) -> dict:
         """
             Método de clase para obtener todas 
             las compra registradss en el sistema
@@ -69,7 +69,7 @@ class Compra:
         return cls._compras
 
     @classmethod
-    def setClientes(cls, compras:dict) -> None:
+    def setCompras(cls, compras:dict) -> None:
         """
             Método de clase para establecer todas 
             las compras registradas en el sistema

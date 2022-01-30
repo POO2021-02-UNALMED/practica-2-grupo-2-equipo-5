@@ -34,7 +34,7 @@ class TipoProducto:
         TipoProducto._index_codigo += 1
 
         # Se guarda el objeto en un diccionario con su identificador como llave
-        TipoProducto._Tipo_Producto[self._codigo] = self
+        TipoProducto._tipos_de_productos[self._codigo] = self
 
     # Metodos get
     def getCodigo(self) -> int:
@@ -92,4 +92,4 @@ class TipoProducto:
         """
         return   "Codigo"      + str(self._codigo) + "\n" \
                + "Nombre: "    + str(self._nombre) + "\n" \
-               + "Impuesto: "  + str(self.impuesto) + "\n" 
+               + "Impuesto: "  + str(self._impuesto) + "\n" 
