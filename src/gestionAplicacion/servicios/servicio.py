@@ -103,8 +103,8 @@ class Servicio:
         """
             Método toString
         """
-        return    "Id Servicio: "                + str(self._id) + "\n" \
+        return    "Id Servicio: "       + str(self._id) + "\n" \
                 + "Precio: "            + str(self._precio) + "\n" \
-                + "Fecha de servicio: " + self._fecha_servicio + "\n" \
-                + "Descripción: "       + self._descripcion + "\n"
+                + "Fecha de servicio: " + str(self._fecha_servicio) + "\n" \
+                + "Descripción: "       + str(self._descripcion) + "\n"
     

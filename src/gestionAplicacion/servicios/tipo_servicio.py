@@ -74,4 +74,4 @@ class TipoServicio():
             Método toString
         """
         return    "Codigo: " + str(self._codigo) + "\n" \
-                + "Nombre: " + self._nombre + "\n"
+                + "Nombre: " + str(self._nombre) + "\n"

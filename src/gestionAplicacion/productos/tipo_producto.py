@@ -91,5 +91,5 @@ class TipoProducto:
             Método toString
         """
         return   "Codigo"      + str(self._codigo) + "\n" \
-               + "Nombre: "    + self._nombre + "\n" \
-               + "Impuesto: "  + self.impuesto + "\n" 
+               + "Nombre: "    + str(self._nombre) + "\n" \
+               + "Impuesto: "  + str(self.impuesto) + "\n" 

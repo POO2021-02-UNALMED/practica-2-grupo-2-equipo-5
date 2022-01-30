@@ -141,7 +141,7 @@ class Producto:
             Método toString
         """
         return   "Codigo: "              + str(self._codigo) + "\n" \
-               + "Nombre: "              + self._nombre + "\n" \
+               + "Nombre: "              + str(self._nombre) + "\n" \
                + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
                + "Precio: "              + str(self._precio) + "\n" \
-               + "Descripcion: "         + self._descripcion
+               + "Descripcion: "         + str(self._descripcion)

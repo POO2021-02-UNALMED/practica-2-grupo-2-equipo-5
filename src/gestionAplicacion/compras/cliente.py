@@ -106,7 +106,7 @@ class Cliente:
             Método toString
         """
         return    "Cédula: "              + str(self.getCedula()) + "\n" \
-                + "Nombre: "              + self.getNombre() + "\n" \
-                + "Direccion: "           + self.getDirección() + "\n" \
+                + "Nombre: "              + str(self.getNombre()) + "\n" \
+                + "Direccion: "           + str(self.getDirección()) + "\n" \
                 + "Telefono: "            + str(self.getTelefono()) + "\n" \
-                + "Fecha de nacimiento: " + self.getFechaNacimiento() + "\n"
+                + "Fecha de nacimiento: " + str(self.getFechaNacimiento()) + "\n"

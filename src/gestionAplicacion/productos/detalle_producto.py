@@ -111,6 +111,6 @@ class DetalleProducto:
             Método toString
         """
         return    "Id Detalle: "          + str(self._id) + "\n" \
-                + "Garantia: "            + self._garantias + "\n" \
-                + "Precio garantia: "     + self._precio_garantia + "\n" \
+                + "Garantia: "            + str(self._garantias) + "\n" \
+                + "Precio garantia: "     + str(self._precio_garantia) + "\n" \
                 + "Es Devolución: "       + str(self._esDevolucion) + "\n" 

@@ -47,4 +47,4 @@ class CompraServicios(Compra):
             Método toString
         """
         return   super().__str__() \
-               + "Tiempo de culminacion: " + self.getTiempoDeCulminacion() + "\n" 
+               + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n" 

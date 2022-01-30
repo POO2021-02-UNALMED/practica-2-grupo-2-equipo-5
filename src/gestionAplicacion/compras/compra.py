@@ -81,5 +81,5 @@ class Compra:
             Método toString
         """
         return    "Codigo compra: " + str(self.getCodigoCompra()) + "\n" \
-                + "Descripcion: "   + self.getDescripcion() + "\n" \
+                + "Descripcion: "   + str(self.getDescripcion()) + "\n" \
                 + "Descuento: "     + str(self.getDescuento()) + "\n"

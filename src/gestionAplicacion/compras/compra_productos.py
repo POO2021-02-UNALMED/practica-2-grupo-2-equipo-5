@@ -79,6 +79,6 @@ class CompraProductos(Compra):
             Método toString
         """
         return   super().__str__() \
-               + "Fecha de compra: " + self.getFechaDeCompra() + "\n" \
+               + "Fecha de compra: " + str(self.getFechaDeCompra()) + "\n" \
                + "Devolución: " + str(self.isDevolucion()) + "\n"
 
