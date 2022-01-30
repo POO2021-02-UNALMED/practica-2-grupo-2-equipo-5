@@ -57,4 +57,4 @@ class Compra:
     def __str__(self):
         return    "Codigo compra: " + str(self.getCodigoCompra()) + "\n" \
                 + "Descripcion: "   + self.getDescripcion() + "\n" \
-                + "Descuento: "     + self.getDescuento() + "\n"
+                + "Descuento: "     + str(self.getDescuento()) + "\n"

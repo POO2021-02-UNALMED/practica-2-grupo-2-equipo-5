@@ -1,4 +1,4 @@
-class DetalleProductos:
+class DetalleProducto:
     """Esta clase es la encarga de llevar en detalle el producto"""
     
     _detalles_productos = {}
@@ -14,11 +14,11 @@ class DetalleProductos:
         self._garantias = garantia
         self._precio_garantia = precio_garantia
         self._esDevolucion = esDevolucion
-        self._id = DetalleProductos._contador
+        self._id = DetalleProducto._contador
         
     
-        DetalleProductos._detalles_productos[self._id] = self
-        DetalleProductos._contador =+ 1
+        DetalleProducto._detalles_productos[self._id] = self
+        DetalleProducto._contador =+ 1
         
     
     def getGatarantias(self)->str:
