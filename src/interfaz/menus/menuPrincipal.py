@@ -1,5 +1,6 @@
 # Se importan las librería a utilizar
 from tkinter import *
+from tkinter import messagebox
 
 class MenuPrincipal(Menu):
     
@@ -25,12 +26,34 @@ class MenuPrincipal(Menu):
         # Se crean los opciones de cada submenu
         
         # Para el caso del submenu Archivos
-        menuArchivos.add_command(label="Aplicacion")
+        menuArchivos.add_command(label="Aplicacion", command=self.mostrarInfo)
         menuArchivos.add_command(label="Salir", command=self.salir)
+        
+        # Para el caso del submenu Procesos y Consultas
+        menuProcesos.add_command(label="Gestionar Clientes")
+        menuProcesos.add_command(label="Gestionar Compras")
+        menuProcesos.add_command(label="Gestionar Empleados")
+        menuProcesos.add_command(label="Gestionar Productos")
+        menuProcesos.add_command(label="Gestionar Servicios")
+        
+        # Para el caso del submenu Ayuda
+        menuAyuda.add_command(label="Acerca de", command=self.quienesSomos)
         
     def salir(self):
         self._controlador.deiconify()
         self._padre.destroy()
+        
+    def mostrarInfo(self):
+        messagebox.showinfo(
+                title="Información Básica",
+                message="PJ Tech es una tienda que ofrece gran variedad de productos y servicios, orientada a aficionados de la tecnología. Entre los productos que ofrecemos tenemos: computadores, periféricos, componentes (memorias, CPUs, GPUs, discos duros), videojuegos, etc.. Ofrecemos servicios de mantenimiento y reparación tanto de consolas como PCs"
+            )
+        
+    def quienesSomos(self):
+        messagebox.showinfo(
+                title="Autores",
+                message="Diego Valentín Osorio Marín \nFredy Alberto Orozco Loaiza \nJaime Andrés Monsalve Ballesteros" 
+            )
         
         
         

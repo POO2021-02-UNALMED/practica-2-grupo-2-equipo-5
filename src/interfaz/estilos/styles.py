@@ -17,3 +17,5 @@ ESTILOS_LABEL_VENTANA_1 = {
     "fg" : TEXT1,
     "text" : COPY1
 }
+
+FG = "#FDFEFE"
