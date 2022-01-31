@@ -136,6 +136,23 @@ class Producto:
         """
         cls._productos = productos
 
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._index_codigo
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._index_codigo = indice
+
     def __str__(self)->str:
         """
             Método toString
@@ -144,4 +161,4 @@ class Producto:
                + "Nombre: "              + str(self._nombre) + "\n" \
                + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
                + "Precio: "              + str(self._precio) + "\n" \
-               + "Descripcion: "         + str(self._descripcion)
+               + "Descripcion: "         + str(self._descripcion) + "\n"

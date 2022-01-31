@@ -101,6 +101,23 @@ class Cliente:
         """
         cls._clientes = clientes
 
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._index_cedula
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._index_cedula = indice
+
     def __str__(self) -> str:
         """
             Método toString

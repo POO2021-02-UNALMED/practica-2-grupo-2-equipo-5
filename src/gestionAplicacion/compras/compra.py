@@ -61,7 +61,7 @@ class Compra:
         self._cliente = cliente
 
     @classmethod
-    def getClientes(cls) -> dict:
+    def getCompras(cls) -> dict:
         """
             Método de clase para obtener todas 
             las compra registradss en el sistema
@@ -69,12 +69,29 @@ class Compra:
         return cls._compras
 
     @classmethod
-    def setClientes(cls, compras:dict) -> None:
+    def setCompras(cls, compras:dict) -> None:
         """
             Método de clase para establecer todas 
             las compras registradas en el sistema
         """
         cls._compras = compras
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._index_codigo_compra
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._index_codigo_compra = indice
 
     def __str__(self) -> str:
         """

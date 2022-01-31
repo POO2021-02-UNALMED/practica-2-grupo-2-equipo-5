@@ -34,7 +34,7 @@ class TipoProducto:
         TipoProducto._index_codigo += 1
 
         # Se guarda el objeto en un diccionario con su identificador como llave
-        TipoProducto._Tipo_Producto[self._codigo] = self
+        TipoProducto._tipos_de_productos[self._codigo] = self
 
     # Metodos get
     def getCodigo(self) -> int:
@@ -85,6 +85,23 @@ class TipoProducto:
             los tipos de productos registrados en el sistema
         """
         cls._tipos_de_productos = tipos_de_productos
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._index_codigo
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._index_codigo = indice
     
     def __str__(self) -> str:
         """
@@ -92,4 +109,4 @@ class TipoProducto:
         """
         return   "Codigo"      + str(self._codigo) + "\n" \
                + "Nombre: "    + str(self._nombre) + "\n" \
-               + "Impuesto: "  + str(self.impuesto) + "\n" 
+               + "Impuesto: "  + str(self._impuesto) + "\n" 

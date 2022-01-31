@@ -10,14 +10,16 @@ class DetalleProducto:
     # Indice para tener identificador unico de los detalles de productos
     _contador = 0
 
-    def __init__(self, garantia:str, precio_garantia:float, esDevolucion:bool=False) -> None:
+    def __init__(self, producto, compraProductos, precio_garantia:float = 0.0, garantia:str= None, esDevolucion:bool=False) -> None:
         """
             Constructor de la clase DetalleProducto
 
             Args:
-                garantia (str): Esté es el código de la garantía
-                precio_garantia (float): cual es el precio de la garantía
+                garantia (str, opcional): Esté es el código de la garantía. Default to None.
+                precio_garantia (float, opcional): cual es el precio de la garantía. Defaults to 0.0
                 esDevolucion (boolean, optional): se pregunta si es una devolución. Defaults to False.
+                producto (Producto): Prodcuto asociado
+                compraProdcutos (CompraProductos): Compra asociada a ese detalle de producto
         """
 
         # Atributos
@@ -27,17 +29,17 @@ class DetalleProducto:
         self._esDevolucion = esDevolucion
         
         # Relacion con Producto
-        self._producto = None
+        self._producto = producto
 
         # Relacion con CompraProductos
-        self._compra_productos = None
-
-        # Aumentar el indice del identificador
-        DetalleProducto._contador =+ 1
+        self._compra_productos = compraProductos
 
         # Se guarda el objeto en el diccionario de _detalles_productos con su identificador como llave
         DetalleProducto._detalles_productos[self._id] = self
-        
+
+        # Aumentar el indice del identificador
+        DetalleProducto._contador += 1
+
     # Metodos get
     def getId(self) -> int:
         return self._id
@@ -105,12 +107,29 @@ class DetalleProducto:
             los detalles de productos registrados en el sistema
         """
         cls._detalles_productos = detalle
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._contador
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._contador = indice
     
     def __str__(self) -> str:
         """
             Método toString
         """
         return    "Id Detalle: "          + str(self._id) + "\n" \
-                + "Garantia: "            + str(self._garantias) + "\n" \
+                + "Garantia: "            + str(self._garantia) + "\n" \
                 + "Precio garantia: "     + str(self._precio_garantia) + "\n" \
                 + "Es Devolución: "       + str(self._esDevolucion) + "\n" 

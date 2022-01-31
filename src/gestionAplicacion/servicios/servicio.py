@@ -11,7 +11,7 @@ class Servicio:
     # Indice para tener identificador unico
     _count = 0
     
-    def __init__(self, precio:float, fecha_servicio:str, descripcion:str) -> None:
+    def __init__(self, precio:float, fecha_servicio:str, descripcion:str, tipoServicio, CompraServicios) -> None:
         """
             Constructor de la clase Servicio
 
@@ -19,6 +19,8 @@ class Servicio:
                 precio (float): precio del servicio
                 fecha_servicio (str): fecha del servicio
                 descripcion (str): descripción del servicio
+                tipoServicio (TipoServicio): tipo de servicio asociado
+                CompraServicios (CompraServicios): compra de servicios asociada
         """
 
         # Atributos
@@ -28,10 +30,10 @@ class Servicio:
         self._descripcion = descripcion
 
         # Relacion con CompraServicio
-        self._compra_servicios = None
+        self._compra_servicios = CompraServicios
 
         # Relacion con TipoServicio
-        self._tipo_servicio = None
+        self._tipo_servicio = tipoServicio
 
         # Relacion con Tecnico que revisa
         self._tecnico_revisa = None
@@ -92,12 +94,29 @@ class Servicio:
         return cls._servicios
     
     @classmethod
-    def seTiposDeProductos(cls, servicios:dict) -> None:
+    def setServicios(cls, servicios:dict) -> None:
         """
             Método de clase para establecer todos
             los servicios registrados en el sistema
         """
         cls._servicios = servicios
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._count
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._count = indice
     
     def __str__(self) -> str:
         """

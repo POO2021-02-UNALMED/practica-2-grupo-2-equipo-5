@@ -69,6 +69,39 @@ class TipoServicio():
         if isinstance(servicio, Servicio):
             self._servicios[servicio.getId()] = servicio
 
+    @classmethod
+    def getTiposServicio(cls) -> dict:
+        """
+            Método de clase para obtener todos 
+            los tipos de servicio registradss en el sistema
+        """
+        return cls._tipos_de_servicios
+
+    @classmethod
+    def setTiposServicio(cls, tipos_de_servicio:dict) -> None:
+        """
+            Método de clase para establecer todos 
+            los tipos de servicio registrados en el sistema
+        """
+        cls._tipos_de_servicios = tipos_de_servicio
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._index_codigo
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._index_codigo = indice
+
     def __str__(self) -> str:
         """
             Método toString
