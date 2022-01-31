@@ -100,6 +100,23 @@ class Servicio:
             los servicios registrados en el sistema
         """
         cls._servicios = servicios
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._count
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._count = indice
     
     def __str__(self) -> str:
         """

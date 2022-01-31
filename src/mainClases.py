@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     deserializar()
 
-    # ## CREACION OBJETOS DE PRUEBA
+    ## CREACION OBJETOS DE PRUEBA
 
     # # compras de productos
     # compraProductos1 = CompraProductos(descripcion="Hello", descuento=0.05, 

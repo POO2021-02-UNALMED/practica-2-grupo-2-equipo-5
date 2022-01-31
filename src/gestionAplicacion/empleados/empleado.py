@@ -86,6 +86,23 @@ class Empleado():
         """
         cls._empleados = empleados
 
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._indexCodigoEmpleado
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._indexCodigoEmpleado = indice
+
     def __str__(self) -> str:
         """
             Método toString

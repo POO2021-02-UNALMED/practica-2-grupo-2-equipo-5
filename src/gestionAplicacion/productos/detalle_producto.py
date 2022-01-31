@@ -107,6 +107,23 @@ class DetalleProducto:
             los detalles de productos registrados en el sistema
         """
         cls._detalles_productos = detalle
+
+    @classmethod
+    def getIndex(cls) -> int:
+        """
+            Metodo de clase que nos devuelve el
+            estado actual del contador id unico
+        """
+        return cls._contador
+
+    @classmethod
+    def setIndex(cls, indice:int) -> int:
+        """
+            Metodo de clase con el cual podemos
+            restablcer el indice id unico al
+            cargar de nuevo los datos
+        """
+        cls._contador = indice
     
     def __str__(self) -> str:
         """
