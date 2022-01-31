@@ -66,53 +66,53 @@ class Inicio(Frame, Tk):
 
         # Condicionales para configurar las 4 imagenes de cada desarrollador
         if self._numeroInicio == 0 :
-            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen1.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres1.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen1.image = python_imagen1
             self.imagen1.configure(image = python_imagen1)
 
-            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen2.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres2.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen2.image = python_imagen2
             self.imagen2.configure(image = python_imagen2)
 
-            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen3.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres3.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen3.image = python_imagen3
             self.imagen3.configure(image = python_imagen3)
 
-            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen4.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres4.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen4.image = python_imagen4
             self.imagen4.configure(image = python_imagen4)
 
         elif self._numeroInicio == 1:
-            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen5.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_fredy/fredy1.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen1.image = python_imagen1
             self.imagen1.configure(image = python_imagen1)
 
-            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen6.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_fredy/fredy2.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen2.image = python_imagen2
             self.imagen2.configure(image = python_imagen2)
 
-            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen7.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_fredy/fredy3.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen3.image = python_imagen3
             self.imagen3.configure(image = python_imagen3)
 
-            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen8.png').resize((300,225), Image.ANTIALIAS))
+            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_fredy/fredy4.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen4.image = python_imagen4
             self.imagen4.configure(image = python_imagen4)
 
         elif self._numeroInicio == 2:
-            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Bonfire.jpg').resize((300,225), Image.ANTIALIAS))
+            python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_valentin/valentin1.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen1.image = python_imagen1
             self.imagen1.configure(image = python_imagen1)
 
-            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/750335.jpg').resize((300,225), Image.ANTIALIAS))
+            python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_valentin/valentin2.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen2.image = python_imagen2
             self.imagen2.configure(image = python_imagen2)
 
-            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Bloodborne.jpg').resize((300,225), Image.ANTIALIAS))
+            python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_valentin/valentin3.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen3.image = python_imagen3
             self.imagen3.configure(image = python_imagen3)
 
-            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Got.jpg').resize((300,225), Image.ANTIALIAS))
+            python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_valentin/valentin4.jpeg').resize((300,225), Image.ANTIALIAS))
             self.imagen4.image = python_imagen4
             self.imagen4.configure(image = python_imagen4)
 
@@ -226,28 +226,28 @@ class Inicio(Frame, Tk):
         labelgeneralImagenes = Label(self._p5, justify=CENTER)
         labelgeneralImagenes.pack(side = TOP, fill = BOTH, expand = True, padx = 10, pady = 30)
         
-        python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen1.png').resize((300,225), Image.ANTIALIAS))
+        python_imagen1 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres1.jpeg').resize((300,225), Image.ANTIALIAS))
 
         self.imagen1 = Label(labelgeneralImagenes)
         self.imagen1.image = python_imagen1
         self.imagen1.configure(image = python_imagen1)
         self.imagen1.grid(row = 0, column=0, sticky=NSEW)
 
-        python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen2.png').resize((300,225), Image.ANTIALIAS))
+        python_imagen2 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres2.jpeg').resize((300,225), Image.ANTIALIAS))
 
         self.imagen2 = Label(labelgeneralImagenes)
         self.imagen2.image = python_imagen2
         self.imagen2.configure(image = python_imagen2)
         self.imagen2.grid(row = 0, column=1, sticky=NSEW)
 
-        python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen3.png').resize((300,225), Image.ANTIALIAS))
+        python_imagen3 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres3.jpeg').resize((300,225), Image.ANTIALIAS))
 
         self.imagen3 = Label(labelgeneralImagenes)
         self.imagen3.image = python_imagen3
         self.imagen3.configure(image = python_imagen3)
         self.imagen3.grid(row = 1, column=0, sticky=NSEW)
 
-        python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/Imagen4.png').resize((300,225), Image.ANTIALIAS))
+        python_imagen4 = ImageTk.PhotoImage(Image.open('./src/interfaz/Imagenes/fotos_andres/andres4.jpeg').resize((300,225), Image.ANTIALIAS))
 
         self.imagen4 = Label(labelgeneralImagenes)
         self.imagen4.image = python_imagen4
