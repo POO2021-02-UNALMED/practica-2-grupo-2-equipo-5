@@ -1,4 +1,5 @@
 # Se importan las librería a utilizar
+from distutils import command
 from tkinter import *
 from tkinter import messagebox
 from interfaz.pantallas.fieldFrame import *
@@ -24,6 +25,7 @@ class MenuPrincipal(Menu):
         self.add_cascade(label="Procesos y Consultas", menu=menuProcesos)
         self.add_cascade(label="Ayuda", menu=menuAyuda)
         
+        self._values = {"tituloCriterios":"Atributos", "tituloValores":"Valores"}
         # Se crean los opciones de cada submenu
         
         # Para el caso del submenu Archivos
@@ -31,11 +33,13 @@ class MenuPrincipal(Menu):
         menuArchivos.add_command(label="Salir", command=self.salir)
         
         # Para el caso del submenu Procesos y Consultas
-        menuProcesos.add_command(label="Gestionar Clientes", command=self.gestionarCliente)
-        menuProcesos.add_command(label="Gestionar Compras")
-        menuProcesos.add_command(label="Gestionar Empleados")
-        menuProcesos.add_command(label="Gestionar Productos")
-        menuProcesos.add_command(label="Gestionar Servicios")
+        menuProcesos.add_command(label="Gestionar Clientes", command=self._gestionarCliente)
+        menuProcesos.add_command(label="Gestionar Compra-Productos", command = self._gestionarComprasProductos)
+        menuProcesos.add_command(label="Gestionar Compra-Servicios", command=self._gestionarCompraServicio)
+        menuProcesos.add_command(label="Gestionar Cajeros", command = self._gestionarCajeros)
+        menuProcesos.add_command(label="Gestionar Técnicos", command=self._gestionarTecnico)
+        menuProcesos.add_command(label="Gestionar Productos", command=self._gestionarProductos)
+        menuProcesos.add_command(label="Gestionar Servicios", command=self._gestionarServicios)
         
         # Para el caso del submenu Ayuda
         menuAyuda.add_command(label="Acerca de", command=self.quienesSomos)
@@ -56,8 +60,55 @@ class MenuPrincipal(Menu):
                 message="Diego Valentín Osorio Marín \nFredy Alberto Orozco Loaiza \nJaime Andrés Monsalve Ballesteros" 
             )
         
-    def gestionarCliente(self):
-        self._controlador.mostrarFrame(FieldFrame)
+    def _gestionarCliente(self):
+        self._values["criterios"] = ["Nombre", "Dirección", "Teléfono", "Fecha Nacimiento"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar cliente"
+        self._values["descripcionProceso"] = "Hola que haces"
+        self._controlador.mostrarFrame(self._values)
+    
+    def _gestionarComprasProductos(self):
+        self._values["criterios"] = ["Descripcion", "Descuento","Fecha de compra"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar Compra-Productos"
+        self._values["descripcionProceso"] = "Gueno"
+        self._controlador.mostrarFrame(self._values)
+
+    def _gestionarCompraServicio(self):
+        self._values["criterios"] = ["Descripcion", "Descuento","Tiempo de culminación"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar Compra-Servicios"
+        self._values["descripcionProceso"] = "Que mas pues"
+        self._controlador.mostrarFrame(self._values)
+    
+    def _gestionarCajeros(self):
+        self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Cantidad de ventas"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar empleados de cajeros"
+        self._values["descripcionProceso"] = "Hello baby!!"
+        self._controlador.mostrarFrame(self._values)
+    
+    def _gestionarTecnico(self):
+        self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Años de experiencias"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar empleados de servicio"
+        self._values["descripcionProceso"] = "Jonichigua"
+        self._controlador.mostrarFrame(self._values)
+    
+    def _gestionarProductos(self):
+        self._values["criterios"] = ["Nombre", "Fecha de Ingreso", "Precio", "Descripción"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar Productos"
+        self._values["descripcionProceso"] = "Peguelo peguelo papi"
+        self._controlador.mostrarFrame(self._values)
+    
+    def _gestionarServicios(self):
+        self._values["criterios"] = ["Precio", "Fecha Servicio", "Descripción"]
+        self._values["valores"] = [None]* len(self._values["criterios"])
+        self._values["nombreProceso"] = "Gestionar Productos"
+        self._values["descripcionProceso"] = "Peguelo peguelo papi"*2
+        self._controlador.mostrarFrame(self._values)
+
         
         
         
