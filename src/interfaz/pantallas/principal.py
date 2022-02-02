@@ -2,6 +2,7 @@
 from tkinter import *
 from interfaz.menus.menuPrincipal import MenuPrincipal
 from interfaz.estilos.styles import *
+from interfaz.pantallas.fieldFrame import Lanzamiento
 from interfaz.pantallas.fieldFrame import FieldFrame
 
 class Principal(Toplevel):
@@ -15,7 +16,7 @@ class Principal(Toplevel):
         self.title("PJ Tech")
         
         # Se agrega el menu
-        menuPrincipal = MenuPrincipal(self, padre)
+        menuPrincipal = MenuPrincipal(padre, self)
         self['menu'] = menuPrincipal
         
         # Inicio
@@ -25,11 +26,28 @@ class Principal(Toplevel):
         contenedor.grid_columnconfigure(0, weight=1)
         contenedor.grid_rowconfigure(0, weight=1)
         
-        criterios = ["Codigo", "Nombre", "Descripción", "Ubicación"]
-        valores = ["123", "Jaime", "Hola mundo", "Calle 13"]
         
-        self._ventanaPrincipal = FieldFrame(contenedor, self, "Criterio", criterios, "Valor", valores)
-        self._ventanaPrincipal.grid(row=0, column=0, sticky=NSEW)
+        self._frames = {}
+        
+        for F in (Lanzamiento, FieldFrame):
+            frame = F(contenedor, self)
+            self._frames[F] = frame
+            frame.grid(row=0, column=0, sticky=NSEW)
+            
+        self.mostrarFrame(Lanzamiento)
+        
+    def mostrarFrame(self, contenedor):
+        frame = self._frames.get(contenedor)
+
+        if frame:
+            frame.tkraise()
+        
+        
+        #criterios = ["Codigo", "Nombre", "Descripción", "Ubicación"]
+        #valores = ["123", "Jaime", "Hola mundo", "Calle 13"]
+        
+        #self._ventanaPrincipal = FieldFrame(contenedor, self, "Criterio", criterios, "Valor", valores)
+        #self._ventanaPrincipal.grid(row=0, column=0, sticky=NSEW)
 
 
         

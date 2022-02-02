@@ -1,6 +1,7 @@
 # Se importan las librería a utilizar
 from tkinter import *
 from tkinter import messagebox
+from interfaz.pantallas.fieldFrame import *
 
 class MenuPrincipal(Menu):
     
@@ -30,7 +31,7 @@ class MenuPrincipal(Menu):
         menuArchivos.add_command(label="Salir", command=self.salir)
         
         # Para el caso del submenu Procesos y Consultas
-        menuProcesos.add_command(label="Gestionar Clientes")
+        menuProcesos.add_command(label="Gestionar Clientes", command=self.gestionarCliente)
         menuProcesos.add_command(label="Gestionar Compras")
         menuProcesos.add_command(label="Gestionar Empleados")
         menuProcesos.add_command(label="Gestionar Productos")
@@ -54,6 +55,9 @@ class MenuPrincipal(Menu):
                 title="Autores",
                 message="Diego Valentín Osorio Marín \nFredy Alberto Orozco Loaiza \nJaime Andrés Monsalve Ballesteros" 
             )
+        
+    def gestionarCliente(self):
+        self._controlador.mostrarFrame(FieldFrame)
         
         
         
