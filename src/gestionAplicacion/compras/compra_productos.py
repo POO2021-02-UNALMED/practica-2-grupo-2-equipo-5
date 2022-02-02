@@ -74,6 +74,16 @@ class CompraProductos(Compra):
         """
         self._cajero = cajero
 
+    def obtenerTotal(self)->float:
+        """Obtiene el total de todos los productos vendidos
+
+        Returns:
+            float: Total de productos vendidos
+        """
+        #Aqui obtenemos todos los precios de los productos y lo sumamos
+        total = sum([detalle_producto.getProducto().getPrecio() for detalle_producto in self._detalles_productos.values()])
+        return total
+
     def __str__(self) -> str:
         """
             Método toString

@@ -118,6 +118,33 @@ class Cliente:
         """
         cls._index_cedula = indice
 
+    @classmethod
+    def clientesValiosos(cls, valor:float)->dict:
+        """Devuelve los cliente valiosos
+
+        Args:
+            valor (float): Valor por el cual se van a filtrar las compras de los clientes valiosos
+
+        Returns:
+            dict: Retorna una lista de diccionarios donde se tiene dos key(cliente, total), la key cliente tiene el objecto cliente y la key total el total por compras
+        """
+        flitro_clientes =[]
+        #Comenzamos a recorrer todos los clientes
+        for _, cliente in cls._clientes.items():
+            compras = cliente.getCompras()
+            #Miramos si los clientes ya tienen compra
+            if compras:
+                #Cada objeto tipo compra servicio ó compra producto, tiense un método llamado obtener total.
+                total = sum([compra.obtenerTotal() for compra in compras.values()])
+                #filtramos por el valor que manda el usuario
+                if total>= float(valor):
+                    #Guardamos los resultados en un diccionario
+                    values = {"cliente":cliente, "total": total}
+                    flitro_clientes.append(values)
+        
+        return flitro_clientes
+
+
     def __str__(self) -> str:
         """
             Método toString
