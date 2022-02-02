@@ -42,12 +42,6 @@ class Principal(Toplevel):
         frame.tkraise()
 
         
-        
-        #criterios = ["Codigo", "Nombre", "Descripción", "Ubicación"]
-        #valores = ["123", "Jaime", "Hola mundo", "Calle 13"]
-        
-        #self._ventanaPrincipal = FieldFrame(contenedor, self, "Criterio", criterios, "Valor", valores)
-        #self._ventanaPrincipal.grid(row=0, column=0, sticky=NSEW)
 
 
         
