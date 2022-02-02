@@ -102,6 +102,30 @@ class Empleado():
             cargar de nuevo los datos
         """
         cls._indexCodigoEmpleado = indice
+    
+    @classmethod
+    def calcularComision(cls)->list:
+        """Calcula la comision de todos los empleados
+
+        Returns:
+            list: lista de diccionarios que devulve tres llaves
+                -> empleado: Objecto empleado
+                -> comision: comision del empleado
+                -> total: total que se le debe pagar. Comisión + sueldo
+        """
+
+        informacion_empleados = []
+        #Recorremos toda la lista de los empleados
+        for empleado in cls._empleados.values():
+            #Calculamos la comision del el empleado 
+             comision = empleado.getComision() * empleado.getCantidadEnVentas()
+             total = comision + empleado.getSueldo()
+             #Rendereamos la información que se le va a mandar al fronted.
+             data = {"empleado":empleado, "comision":comision, "total": total}
+             informacion_empleados.append(data)
+        
+        return informacion_empleados
+
 
     def __str__(self) -> str:
         """

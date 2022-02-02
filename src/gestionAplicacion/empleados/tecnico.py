@@ -70,6 +70,32 @@ class Tecnico(Empleado):
         if self._servicios_revisados == None:
             self._servicios_revisados = {}
         self._servicios_revisados[servicio.getId()] = servicio
+    
+    def getCantidadEnVentas(self)->int:
+        """Se calculó el total de los servicos realizados y de los servicios revisados
+
+        Returns:
+            int: Retorna la suma de los servicios realizados y revisados.
+        """
+
+        total = 0
+        #Calculamos la cantidad de servicios realizados.
+
+        if self._tipos_de_servicio: #Comprobamos del que el empleado tenga tipo_de_servicos
+            for tipo_servicio in self._tipos_de_servicio.values():
+                servicios = tipo_servicio.getServicios()
+                if servicios: #Comprobamos de que el tipo servicio, tenga servicios realizados
+                    total += len(servicios)
+        
+        #Calculamos la cantidad de servicios revisados
+        if self._servicios_revisados: #Comprobamos de que el tecnico tenga revisiones
+            for servicio_relalizado in self._servicios_revisados.values():
+                servicio = servicio_relalizado.getServicios()
+                if servicio:
+                    total += len(servicio)
+
+        return total
+    
 
     def __str__(self) -> str:
         """
