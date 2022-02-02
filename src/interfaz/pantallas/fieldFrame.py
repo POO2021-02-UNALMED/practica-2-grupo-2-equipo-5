@@ -28,15 +28,17 @@ class FieldFrame(Frame):
         self._tituloValores = tituloValores
         self._valores = valores
         self._habilitado = habilitado
+        self._nombreProceso = nombreProceso
+        self._descripcionProceso = descripcionProceso
         
         # Inicializamos los widgets
         
         # Titulo (Gestion ....)
-        labelNombreProceso = Label(self, justify=CENTER, text="Gestion Cliente", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
+        labelNombreProceso = Label(self, justify=CENTER, text=self._nombreProceso, bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
         labelNombreProceso.pack(side=TOP, fill=X, padx=10, pady=10)
         
         # Descripción
-        labelDescripcionProceso = Label(self, justify=CENTER, text="Edita o consulta clientes", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
+        labelDescripcionProceso = Label(self, justify=CENTER, text=self._descripcionProceso, bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
         labelDescripcionProceso.pack(side=TOP, fill=X, padx=10, pady=10)
         
         # Criterio valor se empaquetan todos los widgets dentro de un Frame y se usa grid para posicionar los elementos
