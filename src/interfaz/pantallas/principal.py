@@ -6,6 +6,7 @@ from interfaz.pantallas.lanzamiento import Lanzamiento
 from interfaz.pantallas.fieldFrame import FieldFrame
 from interfaz.pantallas.clientesValioso import ClienteValioso
 from interfaz.pantallas.devolucion import Devolucion
+from interfaz.pantallas.comision import Comision
 
 class Principal(Toplevel):
     
@@ -30,7 +31,7 @@ class Principal(Toplevel):
         
         self._framesFuncionalidades = {}
         
-        for F in (Lanzamiento, ClienteValioso, Devolucion):
+        for F in (Lanzamiento, ClienteValioso, Devolucion, Comision):
             self._frame =F(self._contenedor, self)
             self._framesFuncionalidades[F] = self._frame
             self._frame.grid(row=0, column=0, sticky=NSEW)

@@ -6,6 +6,7 @@ from interfaz.pantallas.fieldFrame import *
 from gestionAplicacion.servicios.servicio import Servicio
 from interfaz.pantallas.clientesValioso import ClienteValioso
 from interfaz.pantallas.devolucion import Devolucion
+from interfaz.pantallas.comision import Comision
 
 class MenuPrincipal(Menu):
     
@@ -134,7 +135,7 @@ class MenuPrincipal(Menu):
         self._controlador.mostrarFrameFuncionalidades(Devolucion)
 
     def _calcularComision(self):
-        pass
+        self._controlador.mostrarFrameFuncionalidades(Comision)
 
     def _generarInforme(self):
         pass
