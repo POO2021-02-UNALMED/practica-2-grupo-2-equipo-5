@@ -59,16 +59,17 @@ class ClienteValioso(Frame):
         
         if len(valor) != 0:
             valor = float(valor)
-            clientes_valiosos = Cliente.clientesValiosos(valor)
             
-        self.mostrarClientesValiosos(clientes_valiosos)
+            if valor >=  0:
+                clientes_valiosos = Cliente.clientesValiosos(valor)
+                self.mostrarClientesValiosos(clientes_valiosos)
             
             
     def mostrarClientesValiosos(self, clientes):
         texto = ""
         
         for val in clientes:
-            texto += val["cliente"].__str__() + "\n"
+            texto += val["cliente"].__str__() + "Total: " + str(val["total"]) + "\n\n"
             
         self._mostrarClientesValiosos.config(text=texto)
         
