@@ -1,6 +1,17 @@
 from tkinter import *
 from interfaz.estilos.styles import *
 
+class Lanzamiento(Frame):
+    
+    def __init__(self, padre, controlador):
+            super().__init__(padre)
+            self.configure(background=BACKGROUND_CONTENEDOR)
+            self._controlador = controlador
+            
+            labelInicial = Label(self, justify=CENTER, text="Manual", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
+            labelInicial.pack(side=TOP, fill=BOTH, padx=10, pady=10)
+    
+
 class FieldFrame(Frame):
     
     def __init__(self, padre, controlador, tituloCriterios = None, criterios = None, tituloValores = None, valores = None, habilitado = None, nombreProceso = None, descripcionProceso = None):
@@ -39,14 +50,14 @@ class FieldFrame(Frame):
         labelValores.grid(row=0, column=1, sticky=EW)
         
         # Creamos los labels de acuerdo a los datos de entrada por el usuario
-        numero_criterios = len(self._criterios)
-        numero_valores = len(self._valores)
+        #numero_criterios = len(self._criterios)
+        #numero_valores = len(self._valores)
         
-        for i in range(numero_criterios):
-            Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER, padx=50, pady=20).grid(row=i+1, column=0, sticky=EW)
+        #for i in range(numero_criterios):
+            #Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER, padx=50, #pady=20).grid(row=i+1, column=0, sticky=EW)
             
-        for i in range(numero_valores):
-            Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER).grid(row=i+1, column=1, sticky=EW)
+        #for i in range(numero_valores):
+         #   Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER).grid(row=i+1, column=1, sticky=EW, #padx=50, pady=20)
         
         # Expandimos los labels dentro del frame anidado 3
         frameCriterioValor.columnconfigure(1, weight=1)
