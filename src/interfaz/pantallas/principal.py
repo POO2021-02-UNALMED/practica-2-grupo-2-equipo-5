@@ -14,33 +14,33 @@ class Principal(Toplevel):
         
         # Titulo
         self.title("PJ Tech")
-        
+        self.geometry("500x500")
         # Se agrega el menu
         menuPrincipal = MenuPrincipal(padre, self)
         self['menu'] = menuPrincipal
         
         # Inicio
-        contenedor = Frame(self)
-        contenedor.pack(side=TOP, fill=BOTH, expand=True)
-        contenedor.configure(background=BACKGROUND_CONTENEDOR)
-        contenedor.grid_columnconfigure(0, weight=1)
-        contenedor.grid_rowconfigure(0, weight=1)
+        self._contenedor = Frame(self)
+        self._contenedor.pack(side=TOP, fill=BOTH, expand=True)
+        self._contenedor.configure(background=BACKGROUND_CONTENEDOR)
+        self._contenedor.grid_columnconfigure(0, weight=1)
+        self._contenedor.grid_rowconfigure(0, weight=1)
         
         
         self._frames = {}
         
-        for F in (Lanzamiento, FieldFrame):
-            frame = F(contenedor, self)
-            self._frames[F] = frame
-            frame.grid(row=0, column=0, sticky=NSEW)
+        # for F in (Lanzamiento, FieldFrame):
+        #     frame = F(contenedor, self)
+        #     self._frames[F] = frame
+        #     frame.grid(row=0, column=0, sticky=NSEW)
             
-        self.mostrarFrame(Lanzamiento)
+        #self.mostrarFrame(Lanzamiento)
         
-    def mostrarFrame(self, contenedor):
-        frame = self._frames.get(contenedor)
+    def mostrarFrame(self, values:dict):
+        frame = FieldFrame(self._contenedor, self, **values)
+        frame.grid(row=0, column=0, sticky=NSEW)
+        frame.tkraise()
 
-        if frame:
-            frame.tkraise()
         
         
         #criterios = ["Codigo", "Nombre", "Descripción", "Ubicación"]
