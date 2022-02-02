@@ -3,6 +3,7 @@ from distutils import command
 from tkinter import *
 from tkinter import messagebox
 from interfaz.pantallas.fieldFrame import *
+from gestionAplicacion.servicios.servicio import Servicio
 
 class MenuPrincipal(Menu):
     
@@ -39,7 +40,11 @@ class MenuPrincipal(Menu):
         menuProcesos.add_command(label="Gestionar Cajeros", command = self._gestionarCajeros)
         menuProcesos.add_command(label="Gestionar Técnicos", command=self._gestionarTecnico)
         menuProcesos.add_command(label="Gestionar Productos", command=self._gestionarProductos)
-        menuProcesos.add_command(label="Gestionar Servicios", command=self._gestionarServicios)
+        menuProcesos.add_command(label="Ver clientes valiosos", command=self._verClientesValisos)
+        menuProcesos.add_command(label="Devolucion compra productos", command=self._verDevolucionCompraProductos)
+        menuProcesos.add_command(label="Calcular comisiones empleados", command=self._calcularComision)
+        menuProcesos.add_command(label="Generar informe estado de tienda", command=self._generarInforme)
+        menuProcesos.add_command(label="Gestionar inventario", command=self._gestionarInventario)
         
         # Para el caso del submenu Ayuda
         menuAyuda.add_command(label="Acerca de", command=self.quienesSomos)
@@ -61,17 +66,23 @@ class MenuPrincipal(Menu):
             )
         
     def _gestionarCliente(self):
-        self._values["criterios"] = ["Nombre", "Dirección", "Teléfono", "Fecha Nacimiento"]
+        self._values["criterios"] = ["Nombre", "Fecha Nacimiento", "Dirección", "Teléfono"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar cliente"
         self._values["descripcionProceso"] = "Hola que haces"
+        from gestionAplicacion.compras.cliente import Cliente
+        self._values["objeto"] = Cliente
+        self._values["atributos"] = ['nombre', 'fecha_nacimiento', 'direccion', 'telefono']
         self._controlador.mostrarFrame(self._values)
     
     def _gestionarComprasProductos(self):
-        self._values["criterios"] = ["Descripcion", "Descuento","Fecha de compra"]
+        self._values["criterios"] = ["Descripcion", "Descuento", "Fecha de compra"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Productos"
         self._values["descripcionProceso"] = "Gueno"
+        from gestionAplicacion.compras.compra_productos import CompraProductos
+        self._values["objeto"] = CompraProductos
+        self._values["atributos"] = ['descripcion', 'descuento', 'fecha_de_compra']
         self._controlador.mostrarFrame(self._values)
 
     def _gestionarCompraServicio(self):
@@ -79,13 +90,19 @@ class MenuPrincipal(Menu):
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Servicios"
         self._values["descripcionProceso"] = "Que mas pues"
+        from gestionAplicacion.compras.compra_servicios import CompraServicios
+        self._values["objeto"] = CompraServicios
+        self._values["atributos"] = ['descripcion', 'descuento', 'tiempo_de_culminacion']
         self._controlador.mostrarFrame(self._values)
     
     def _gestionarCajeros(self):
-        self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Cantidad de ventas"]
+        self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Correo", "Número de contacto", "Cantidad de ventas"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar empleados de cajeros"
         self._values["descripcionProceso"] = "Hello baby!!"
+        from gestionAplicacion.empleados.cajero import Cajero
+        self._values["objeto"] = Cajero
+        self._values["atributos"] = ['nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'cantidadEnVentas']
         self._controlador.mostrarFrame(self._values)
     
     def _gestionarTecnico(self):
@@ -93,6 +110,9 @@ class MenuPrincipal(Menu):
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar empleados de servicio"
         self._values["descripcionProceso"] = "Jonichigua"
+        from gestionAplicacion.empleados.tecnico import Tecnico
+        self._values["objeto"] = Tecnico
+        self._values["atributos"] = ['nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'experiencia']
         self._controlador.mostrarFrame(self._values)
     
     def _gestionarProductos(self):
@@ -100,16 +120,22 @@ class MenuPrincipal(Menu):
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Productos"
         self._values["descripcionProceso"] = "Peguelo peguelo papi"
+        from gestionAplicacion.productos.producto import Producto
+        self._values["objeto"] = Producto
+        self._values["atributos"] = ['nombre', 'fecha_ingreso', 'precio', 'descripcion']
         self._controlador.mostrarFrame(self._values)
     
-    def _gestionarServicios(self):
-        self._values["criterios"] = ["Precio", "Fecha Servicio", "Descripción"]
-        self._values["valores"] = [None]* len(self._values["criterios"])
-        self._values["nombreProceso"] = "Gestionar Productos"
-        self._values["descripcionProceso"] = "Peguelo peguelo papi"*2
-        self._controlador.mostrarFrame(self._values)
+    def _verClientesValisos(self):
+        pass
 
-        
-        
-        
-    
+    def _verDevolucionCompraProductos(self):
+        pass
+
+    def _calcularComision(self):
+        pass
+
+    def _generarInforme(self):
+        pass
+
+    def _gestionarInventario(self):
+        pass

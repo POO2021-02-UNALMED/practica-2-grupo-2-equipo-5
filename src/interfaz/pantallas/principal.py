@@ -14,7 +14,7 @@ class Principal(Toplevel):
         
         # Titulo
         self.title("PJ Tech")
-        self.geometry("500x500")
+        self.geometry("900x800")
         # Se agrega el menu
         menuPrincipal = MenuPrincipal(padre, self)
         self['menu'] = menuPrincipal
@@ -26,22 +26,10 @@ class Principal(Toplevel):
         self._contenedor.grid_columnconfigure(0, weight=1)
         self._contenedor.grid_rowconfigure(0, weight=1)
         
-        
-        self._frames = {}
-        
-        # for F in (Lanzamiento, FieldFrame):
-        #     frame = F(contenedor, self)
-        #     self._frames[F] = frame
-        #     frame.grid(row=0, column=0, sticky=NSEW)
-            
-        #self.mostrarFrame(Lanzamiento)
+        self._frame = Lanzamiento(self._contenedor, self)
+        self._frame.grid(row=0, column=0, sticky=NSEW)
         
     def mostrarFrame(self, values:dict):
-        frame = FieldFrame(self._contenedor, self, **values)
-        frame.grid(row=0, column=0, sticky=NSEW)
-        frame.tkraise()
-
-        
-
-
-        
+        self._frame = FieldFrame(self._contenedor, self, **values)
+        self._frame.grid(row=0, column=0, sticky=NSEW)
+        self._frame.tkraise()
