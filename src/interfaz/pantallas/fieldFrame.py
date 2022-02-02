@@ -1,16 +1,6 @@
 from tkinter import *
 from interfaz.estilos.styles import *
 
-class Lanzamiento(Frame):
-    
-    def __init__(self, padre, controlador):
-            super().__init__(padre)
-            self.configure(background=BACKGROUND_CONTENEDOR)
-            self._controlador = controlador
-            
-            labelInicial = Label(self, justify=CENTER, text="Manual", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
-            labelInicial.pack(side=TOP, fill=BOTH, padx=10, pady=10)
-    
 
 class FieldFrame(Frame):
     
@@ -58,7 +48,7 @@ class FieldFrame(Frame):
         numero_valores = len(self._valores)
         
         for i in range(numero_criterios):
-            Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER, padx=50, pady=20).grid(row=i+1, column=0, sticky=EW)
+            Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER).grid(row=i+1, column=0, sticky=EW,  padx=50, pady=10)
             
         
         self.entrys = {}
@@ -66,7 +56,7 @@ class FieldFrame(Frame):
         for i in range(numero_valores):
            self.entry = Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER)
            self.entrys[self._atributos[i]] = self.entry
-           self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=20)
+           self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=10)
         
         # Expandimos los labels dentro del frame anidado 3
         frameCriterioValor.columnconfigure(1, weight=1)
@@ -79,10 +69,10 @@ class FieldFrame(Frame):
         frameBotones = Frame(self, bg=BACKGROUND_FRAMES)
         frameBotones.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=20)
         
-        aceptar = Button(frameBotones, text="Aceptar", padx=20, pady=20, command=self.guardarObjeto)
+        aceptar = Button(frameBotones, text="Aceptar", command=self.guardarObjeto, font=FONT)
         aceptar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
-        borrar = Button(frameBotones, text="Borrar", padx=20, pady=20, command = self.borrarCampos)
+        borrar = Button(frameBotones, text="Borrar", command = self.borrarCampos, font=FONT)
         borrar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
     def guardarObjeto(self):

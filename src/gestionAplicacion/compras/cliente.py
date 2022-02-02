@@ -134,7 +134,7 @@ class Cliente:
             compras = cliente.getCompras()
             #Miramos si los clientes ya tienen compra
             if compras:
-                #Cada objeto tipo compra servicio ó compra producto, tiense un método llamado obtener total.
+                # Cada objeto tipo compra servicio ó compra producto, tiense un método llamado obtener total.
                 total = sum([compra.obtenerTotal() for compra in compras.values()])
                 #filtramos por el valor que manda el usuario
                 if total>= float(valor):

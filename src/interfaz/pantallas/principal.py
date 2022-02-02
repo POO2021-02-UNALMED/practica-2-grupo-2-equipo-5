@@ -2,8 +2,10 @@
 from tkinter import *
 from interfaz.menus.menuPrincipal import MenuPrincipal
 from interfaz.estilos.styles import *
-from interfaz.pantallas.fieldFrame import Lanzamiento
+from interfaz.pantallas.lanzamiento import Lanzamiento
 from interfaz.pantallas.fieldFrame import FieldFrame
+from interfaz.pantallas.clientesValioso import ClienteValioso
+from interfaz.pantallas.devolucion import Devolucion
 
 class Principal(Toplevel):
     
@@ -26,10 +28,23 @@ class Principal(Toplevel):
         self._contenedor.grid_columnconfigure(0, weight=1)
         self._contenedor.grid_rowconfigure(0, weight=1)
         
+        self._framesFuncionalidades = {}
+        
+        for F in (Lanzamiento, ClienteValioso, Devolucion):
+            self._frame =F(self._contenedor, self)
+            self._framesFuncionalidades[F] = self._frame
+            self._frame.grid(row=0, column=0, sticky=NSEW)
+            
+        self.mostrarFrameFuncionalidades(Lanzamiento)
+        
         self._frame = Lanzamiento(self._contenedor, self)
         self._frame.grid(row=0, column=0, sticky=NSEW)
         
-    def mostrarFrame(self, values:dict):
+    def mostrarFieldFrame(self, values:dict):
         self._frame = FieldFrame(self._contenedor, self, **values)
         self._frame.grid(row=0, column=0, sticky=NSEW)
+        self._frame.tkraise()
+
+    def mostrarFrameFuncionalidades(self, contenedor):
+        self._frame = self._framesFuncionalidades[contenedor]
         self._frame.tkraise()
