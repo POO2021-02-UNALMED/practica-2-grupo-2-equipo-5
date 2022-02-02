@@ -124,7 +124,7 @@ class DetalleProducto:
             cargar de nuevo los datos
         """
         cls._contador = indice
-    
+        
     def __str__(self) -> str:
         """
             Método toString

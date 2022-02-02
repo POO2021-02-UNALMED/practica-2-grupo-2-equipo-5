@@ -41,6 +41,16 @@ class CompraServicios(Compra):
         if self._servicios == None:
             self._servicios = {}
         self._servicios[servicio.getId()] = servicio
+    
+    def obtenerTotal(self)->float:
+        """Obtiene el total de todos los productos vendidos
+
+        Returns:
+            float: Total de productos vendidos
+        """
+        #Aquí obtenemos todos los precios del servicio y lo sumamos
+        total = sum([servicio.getPrecio() for servicio in self._servicios])
+        return total
 
     def __str__(self) -> str:
         """
