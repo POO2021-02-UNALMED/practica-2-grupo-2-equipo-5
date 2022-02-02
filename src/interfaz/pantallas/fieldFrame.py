@@ -14,7 +14,7 @@ class Lanzamiento(Frame):
 
 class FieldFrame(Frame):
     
-    def __init__(self, padre, controlador, tituloCriterios = None, criterios = None, tituloValores = None, valores = None, habilitado = None, nombreProceso = None, descripcionProceso = None):
+    def __init__(self, padre, controlador, objeto, atributos, tituloCriterios = None, criterios = None, tituloValores = None, valores = None, habilitado = None, nombreProceso = None, descripcionProceso = None):
         # Se llama al padre (Menu), para que inicialice
         super().__init__(padre)
         
@@ -30,6 +30,8 @@ class FieldFrame(Frame):
         self._habilitado = habilitado
         self._nombreProceso = nombreProceso
         self._descripcionProceso = descripcionProceso
+        self._objeto = objeto
+        self._atributos = atributos
         
         # Inicializamos los widgets
         
@@ -58,8 +60,13 @@ class FieldFrame(Frame):
         for i in range(numero_criterios):
             Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER, padx=50, pady=20).grid(row=i+1, column=0, sticky=EW)
             
+        
+        self.entrys = {}
+
         for i in range(numero_valores):
-           Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER).grid(row=i+1, column=1, sticky=EW, padx=50, pady=20)
+           self.entry = Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER)
+           self.entrys[self._atributos[i]] = self.entry
+           self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=20)
         
         # Expandimos los labels dentro del frame anidado 3
         frameCriterioValor.columnconfigure(1, weight=1)
@@ -72,11 +79,19 @@ class FieldFrame(Frame):
         frameBotones = Frame(self, bg=BACKGROUND_FRAMES)
         frameBotones.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=20)
         
-        aceptar = Button(frameBotones, text="Aceptar", padx=20, pady=20)
+        aceptar = Button(frameBotones, text="Aceptar", padx=20, pady=20, command=self.guardarObjeto)
         aceptar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
-        borrar = Button(frameBotones, text="Borrar", padx=20, pady=20)
+        borrar = Button(frameBotones, text="Borrar", padx=20, pady=20, command = self.borrarCampos)
         borrar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
+
+    def guardarObjeto(self):
+
+        valores = {k:v.get() for k, v in self.entrys.items()}
         
-        
-        
+        self._objeto(**valores)
+
+        [item.delete(0, END) for item in self.entrys.values()]
+
+    def borrarCampos(self):
+        [item.delete(0, END) for item in self.entrys.values()]

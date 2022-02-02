@@ -11,7 +11,7 @@ class Servicio:
     # Indice para tener identificador unico
     _count = 0
     
-    def __init__(self, precio:float, fecha_servicio:str, descripcion:str, tipoServicio, CompraServicios) -> None:
+    def __init__(self, precio:float, fecha_servicio:str, descripcion:str, tipoServicio=None, CompraServicios=None) -> None:
         """
             Constructor de la clase Servicio
 
