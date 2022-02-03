@@ -61,7 +61,7 @@ class Comision(Frame):
         texto = ""
         
         for val in empleados:
-            texto += val["empleado"].__str__() + "\n"
+            texto += "Comisiones totales: " + str(val["total"]) + "\n" + val["empleado"].__str__() + "\n"
             
         self._texto.insert(END, texto)
         
