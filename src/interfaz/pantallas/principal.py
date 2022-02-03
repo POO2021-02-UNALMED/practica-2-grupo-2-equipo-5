@@ -7,6 +7,7 @@ from interfaz.pantallas.fieldFrame import FieldFrame
 from interfaz.pantallas.clientesValioso import ClienteValioso
 from interfaz.pantallas.devolucion import Devolucion
 from interfaz.pantallas.comision import Comision
+from interfaz.pantallas.informeTienda import Informe
 
 class Principal(Toplevel):
     
@@ -17,7 +18,7 @@ class Principal(Toplevel):
         
         # Titulo
         self.title("PJ Tech")
-        self.geometry("900x800")
+        self.geometry("1280x1080")
         # Se agrega el menu
         menuPrincipal = MenuPrincipal(self, padre)
         self['menu'] = menuPrincipal
@@ -31,7 +32,7 @@ class Principal(Toplevel):
         
         self._framesFuncionalidades = {}
         
-        for F in (Lanzamiento, ClienteValioso, Devolucion, Comision):
+        for F in (Lanzamiento, ClienteValioso, Devolucion, Comision, Informe):
             self._frame =F(self._contenedor, self)
             self._framesFuncionalidades[F] = self._frame
             self._frame.grid(row=0, column=0, sticky=NSEW)

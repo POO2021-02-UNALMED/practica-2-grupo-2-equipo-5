@@ -21,7 +21,7 @@ class Comision(Frame):
     def _mostrarTitulo(self):
         # Label superior con el título de la pantalla
         self._titulo = Label(self, justify=CENTER, text="Calculo de Comisones", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
-        self._titulo.pack(side=TOP, fill=X, padx=10, pady=10)
+        self._titulo.pack(side=TOP, fill=X, padx=100, pady=10)
         
     def _mostrarBotonCalcular(self):
         # Se crea el botón con el cuál  va a mostrar las comisiones de los empleados
@@ -31,7 +31,7 @@ class Comision(Frame):
     def _mostrarComisionEmpleado(self):
         # Frame anidado debajo en el cuál se van a mostrar las compras realizadas por un cliente de acuerdo al codigo pasado en el Entry de arriba
         self._frameMostrarComisiones = Frame(self, bg="white")
-        self._frameMostrarComisiones.pack(side=TOP, fill=BOTH, expand=True, padx=30, pady=30)
+        self._frameMostrarComisiones.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=30)
         
         # Label        
         self._labelMostrarComisiones = Label(self._frameMostrarComisiones, text="", bg="white", font=FONT4, fg=FG2, justify=CENTER)

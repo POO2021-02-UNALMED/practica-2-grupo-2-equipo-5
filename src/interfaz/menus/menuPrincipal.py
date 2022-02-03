@@ -3,10 +3,10 @@ from distutils import command
 from tkinter import *
 from tkinter import messagebox
 from interfaz.pantallas.fieldFrame import *
-from gestionAplicacion.servicios.servicio import Servicio
 from interfaz.pantallas.clientesValioso import ClienteValioso
 from interfaz.pantallas.devolucion import Devolucion
 from interfaz.pantallas.comision import Comision
+from interfaz.pantallas.informeTienda import Informe
 
 class MenuPrincipal(Menu):
     
@@ -144,7 +144,7 @@ class MenuPrincipal(Menu):
         self._padre.mostrarFrameFuncionalidades(Comision)
 
     def _generarInforme(self):
-        pass
+        self._padre.mostrarFrameFuncionalidades(Informe)
 
     def _gestionarInventario(self):
         pass
