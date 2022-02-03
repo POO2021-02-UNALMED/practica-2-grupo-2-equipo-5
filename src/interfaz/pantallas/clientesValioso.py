@@ -21,7 +21,7 @@ class ClienteValioso(Frame):
     def _mostrarTitulo(self):
         # Label superior con el título de la pantalla
         self._titulo = Label(self, justify=CENTER, text="Clientes Valiosos", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
-        self._titulo.pack(side=TOP, fill=X, padx=10, pady=10)
+        self._titulo.pack(side=TOP, fill=X, padx=100, pady=10)
         
     def _ConsultarClientesValiosos(self):
         # Frame anidado debajo del título en el cuál se le van a agregar los widgets para hacer la consulta de los clientes valiosos
@@ -46,7 +46,7 @@ class ClienteValioso(Frame):
     def _inicializarFrameClientesValiosos(self):
         # Frame anidado debajo en el cuál se van a mostrar los clientes valiosos de acuerdo al valor valioso pasado en el Entry de arriba
         self._frameMostrarClientesValiosos = Frame(self, bg="white")
-        self._frameMostrarClientesValiosos.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=10)
+        self._frameMostrarClientesValiosos.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=10)
         
         self._mostrarClientesValiosos = Label(self._frameMostrarClientesValiosos, text="", bg="white", font=FONT3, fg=FG2, justify=CENTER)
         self._mostrarClientesValiosos.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=10)
