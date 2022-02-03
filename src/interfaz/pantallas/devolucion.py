@@ -1,6 +1,7 @@
 from tkinter import *
 from interfaz.estilos.styles import *
 from gestionAplicacion.compras.cliente import Cliente
+from excepciones import *
 
 class Devolucion(Frame):
     
@@ -77,17 +78,47 @@ class Devolucion(Frame):
         
     def buscarCliente(self):
         valor= self._codigoCliente.get()
+
+        try:
+            val = int(valor)
+        except ValueError:
+            raise ExcepcionTiposMissMatch().showMessage()
+            return
+
+        if int(valor) < 0 :
+            try:
+                raise ExcepcionNegativos()
+            except ExcepcionNegativos as f:
+                f.showMessage()
+            return
         
         if len(valor) != 0:
             valor = int(valor)
-            self._cliente = Cliente.getClientes()[valor]
+            try:
+                self._cliente = Cliente.getClientes()[valor]
+            except KeyError:
+                raise ExcepcionCodigoNoExite().showMessage()
+                return
             self._showCompra(self._cliente)
+        else:
+            try:
+                raise ExcepcionCamposNulos()
+            except ExcepcionCamposNulos as f:
+                f.showMessage()
+            return
         
         self._codigoCliente.delete(0, END)
             
         
     def _showCompra(self, cliente):
         texto = ""
+
+        if len(cliente.getCompras().values()) == 0:
+            try:
+                raise ExcepcionConjuntoVacio()
+            except ExcepcionConjuntoVacio as f:
+                f.showMessage()
+            return
         
         for compra in cliente.getCompras().values():
             texto += compra.__str__() + "\n"
@@ -96,11 +127,34 @@ class Devolucion(Frame):
         
     def eliminarCompraCliente(self):
         valor = self._codigoCompra.get()
+
+        try:
+            val = int(valor)
+        except ValueError:
+            raise ExcepcionTiposMissMatch().showMessage()
+            return
+
+        if int(valor) < 0 :
+            try:
+                raise ExcepcionNegativos()
+            except ExcepcionNegativos as f:
+                f.showMessage()
+            return
         
         if len(valor) != 0:
             valor = int(valor)
-            del self._cliente.getCompras()[valor]
+            try:
+                del self._cliente.getCompras()[valor]
+            except KeyError:
+                raise ExcepcionCodigoNoExite().showMessage()
+                return
+        else:
+            try:
+                raise ExcepcionCamposNulos()
+            except ExcepcionCamposNulos as f:
+                f.showMessage()
+            return
             
-        self._codigoCompra.delete(0, END)
-            
+        messagebox.showinfo("Exito", "La devolucion se hizo correctamente")
         
+        self._codigoCompra.delete(0, END)

@@ -2,6 +2,7 @@ from tkinter import *
 
 from pytest import Instance
 from interfaz.estilos.styles import *
+from excepciones import *
 
 
 class FieldFrame(Frame):
@@ -84,8 +85,19 @@ class FieldFrame(Frame):
         borrar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
     def guardarObjeto(self):
-
+        
         valores = {k:v.get() for k, v in self.entrys.items()}
+
+        for entrada in valores.values():
+            if len(entrada) == 0:
+                try:
+                    raise ExcepcionCamposNulos()
+                except ExcepcionCamposNulos as f:
+                    f.showMessage()
+                return
+
+
+        
         valores.pop("id")
         esta_guardo = self._objeto.crearInterfaz(**valores)
         if esta_guardo:

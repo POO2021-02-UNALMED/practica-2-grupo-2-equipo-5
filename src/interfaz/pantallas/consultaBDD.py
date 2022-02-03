@@ -6,6 +6,7 @@ from gestionAplicacion.compras.compra import Compra
 from gestionAplicacion.servicios.servicio import Servicio
 from gestionAplicacion.empleados.empleado import Empleado
 from gestionAplicacion.empleados.cajero import Cajero
+from excepciones import *
 
 class ConsultaBDD(Frame):
 
@@ -81,23 +82,66 @@ class ConsultaBDD(Frame):
 
     def buscarConsulta(self):
         valor = self._entryConsulta.get()
+
+        try:
+            val = int(valor)
+        except ValueError:
+            raise ExcepcionTiposMissMatch().showMessage()
+            return
+
+        if int(valor) < 0 :
+            try:
+                raise ExcepcionNegativos()
+            except ExcepcionNegativos as f:
+                f.showMessage()
+            return
         
         if len(valor) != 0:
             valor = int(valor)
             self._mostrarConsulta(valor)
+        else:
+            try:
+                raise ExcepcionCamposNulos()
+            except ExcepcionCamposNulos as f:
+                f.showMessage()
+            return
                 
     def _mostrarConsulta(self, valor):
         texto = ""
         
         if valor == 1:
+
+            if len(Producto.getProductos().values()) == 0:
+                try:
+                    raise ExcepcionConjuntoVacio()
+                except ExcepcionConjuntoVacio as f:
+                    f.showMessage()
+                return
+
             for producto in Producto.getProductos().values():
                 texto += producto.__str__() + "\n"
                 
         elif valor == 2:
+
+            if len(Servicio.getServicios().values()) == 0:
+                try:
+                    raise ExcepcionConjuntoVacio()
+                except ExcepcionConjuntoVacio as f:
+                    f.showMessage()
+                return
+
             for servicio in Servicio.getServicios().values():
                 texto += servicio.__str__() + "\n"
         
         elif valor == 3:
+
+            if len(Empleado.getEmpleados().values()) == 0:
+                try:
+                    raise ExcepcionConjuntoVacio()
+                except ExcepcionConjuntoVacio as f:
+                    f.showMessage()
+                return
+
             texto_cajero = "****CAJEROS****\n"
             texto_tecnico = "****TECNICOS****\n"
 
@@ -109,14 +153,34 @@ class ConsultaBDD(Frame):
             texto = texto_cajero + "\n" +texto_tecnico
 
         elif valor == 4:
+
+            if len(Cliente.getClientes().values()) == 0:
+                try:
+                    raise ExcepcionConjuntoVacio()
+                except ExcepcionConjuntoVacio as f:
+                    f.showMessage()
+                return
+
             for cliente in Cliente.getClientes().values():
                 texto += cliente.__str__() + "\n"
                 
         elif valor == 5:
+
+            if len(Compra.getCompras().values()) == 0:
+                try:
+                    raise ExcepcionConjuntoVacio()
+                except ExcepcionConjuntoVacio as f:
+                    f.showMessage()
+                return
+
             for compra in Compra.getCompras().values():
                 texto += compra.__str__() + "\n"
                 
         else: 
-            texto += "Número no válido"
+            try:
+                raise ErrorAplicacion("Numero no valido")
+            except ErrorAplicacion as f:
+                f.showMessage()
+            return
             
         self._texto.insert(END, texto)

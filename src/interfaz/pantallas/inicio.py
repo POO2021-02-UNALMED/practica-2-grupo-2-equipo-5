@@ -203,8 +203,8 @@ class Inicio(Frame, Tk):
 
         unal = Label(labelgeneral, text="Universidad", justify=CENTER)
         unal.grid(row=4, column=0, sticky=EW)
-        self._universidad = Label(labelgeneral, text="Unal", justify=LEFT).grid(row=4, column=1, sticky=EW)
-        
+        universidad = Label(labelgeneral, text="Unal", justify=LEFT)
+        universidad.grid(row=4, column=1, sticky=EW)
         # Expandimos los labels dentro del frame anidado 3
         labelgeneral.columnconfigure(0, weight=1)
 
@@ -218,7 +218,7 @@ class Inicio(Frame, Tk):
         unal.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
         contacto.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
         op.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
-        
+        universidad.bind('<ButtonPress-1>', self.cambiarInfoDesarrolladores)
     
     def inicializarWidgetsVentana4(self):
         """ Se cargan las imagenes de los desarroladores"""

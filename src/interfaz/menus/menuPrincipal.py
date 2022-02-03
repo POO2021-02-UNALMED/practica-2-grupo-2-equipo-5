@@ -73,7 +73,7 @@ class MenuPrincipal(Menu):
         self._values["criterios"] = ["ID", "Nombre", "Fecha Nacimiento", "Dirección", "Teléfono"]
         self._values["habilitado"] = ["ID"]
         self._values["nombreProceso"] = "Gestionar cliente"
-        self._values["descripcionProceso"] = "Hola que haces"
+        self._values["descripcionProceso"] = "Guarda la informacion de un nuevo cliente"
         from gestionAplicacion.compras.cliente import Cliente
         self._values["objeto"] = Cliente
         self._values["valores"] = [Cliente.getIndex()] + [None]*(len(self._values["criterios"]) - len(self._values['habilitado']))
@@ -85,7 +85,7 @@ class MenuPrincipal(Menu):
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Productos"
-        self._values["descripcionProceso"] = "Gueno"
+        self._values["descripcionProceso"] = "Registra la informacion de una nueva compra de productos en el sistema"
         from gestionAplicacion.compras.compra_productos import CompraProductos
         self._values["objeto"] = CompraProductos
         self._values["atributos"] = ['id', 'descripcion', 'descuento', 'fecha_de_compra', 'codigo_cliente', 'codigo_cajero']
@@ -96,7 +96,7 @@ class MenuPrincipal(Menu):
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Servicios"
-        self._values["descripcionProceso"] = "Que mas pues"
+        self._values["descripcionProceso"] = "Registra la informacion de una nueva compra de servicios en el sistema"
         from gestionAplicacion.compras.compra_servicios import CompraServicios
         self._values["objeto"] = CompraServicios
         self._values["atributos"] = ['id', 'descripcion', 'descuento', 'tiempo_de_culminacion', 'codigo_tipo_servicio']
@@ -107,7 +107,7 @@ class MenuPrincipal(Menu):
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar empleados de cajeros"
-        self._values["descripcionProceso"] = "Hello baby!!"
+        self._values["descripcionProceso"] = "Registra la informacion de un nuevo empleado cajero en el sitema"
         from gestionAplicacion.empleados.cajero import Cajero
         self._values["objeto"] = Cajero
         self._values["atributos"] = ['id', 'nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'cantidadEnVentas']
@@ -117,8 +117,8 @@ class MenuPrincipal(Menu):
         self._values["criterios"] = ["ID", "Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Años de experiencias"]
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
-        self._values["nombreProceso"] = "Gestionar empleados de servicio"
-        self._values["descripcionProceso"] = "Jonichigua"
+        self._values["nombreProceso"] = "Gestionar empleados tecnicos"
+        self._values["descripcionProceso"] = "Registra la informacion de un nuevos empleado tecnico"
         from gestionAplicacion.empleados.tecnico import Tecnico
         self._values["objeto"] = Tecnico
         self._values["atributos"] = ['id', 'nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'experiencia']
@@ -129,7 +129,7 @@ class MenuPrincipal(Menu):
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Productos"
-        self._values["descripcionProceso"] = "Peguelo peguelo papi"
+        self._values["descripcionProceso"] = "Registra la informacion de un nuevo producto"
         from gestionAplicacion.productos.producto import Producto
         self._values["objeto"] = Producto
         self._values["atributos"] = ['id', 'nombre', 'fecha_ingreso', 'precio', 'descripcion']

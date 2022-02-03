@@ -1,4 +1,5 @@
 from tkinter import *
+from excepciones import *
 from interfaz.estilos.styles import *
 from gestionAplicacion.compras.cliente import *
 
@@ -69,6 +70,19 @@ class ClienteValioso(Frame):
         
     def buscarClientesValiosos(self):
         valor = self._valorValioso.get()
+
+        try:
+            val = int(valor)
+        except ValueError:
+            raise ExcepcionTiposMissMatch().showMessage()
+            return
+
+        if int(valor) < 0 :
+            try:
+                raise ExcepcionNegativos()
+            except ExcepcionNegativos as f:
+                f.showMessage()
+            return
         
         if len(valor) != 0:
             valor = float(valor)
@@ -76,6 +90,12 @@ class ClienteValioso(Frame):
             if valor >=  0:
                 clientes_valiosos = Cliente.clientesValiosos(valor)
                 self.mostrarClientesValiosos(clientes_valiosos)
+        else:
+            try:
+                raise ExcepcionCamposNulos()
+            except ExcepcionCamposNulos as f:
+                f.showMessage()
+            return
             
             
     def mostrarClientesValiosos(self, clientes):
