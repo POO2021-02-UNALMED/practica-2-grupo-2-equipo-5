@@ -1,5 +1,10 @@
 from tkinter import *
 from interfaz.estilos.styles import *
+from gestionAplicacion.compras.cliente import Cliente
+from gestionAplicacion.productos.producto import Producto
+from gestionAplicacion.compras.compra import Compra
+from gestionAplicacion.servicios.servicio import Servicio
+from gestionAplicacion.empleados.empleado import Empleado
 
 class ConsultaBDD(Frame):
 
@@ -32,7 +37,8 @@ class ConsultaBDD(Frame):
                     + "1. Productos" + "\n" \
                     + "2. Servicios" + "\n" \
                     + "3. Empleados" + "\n" \
-                    + "4. Clientes" + "\n"
+                    + "4. Clientes" + "\n" \
+                    + "5. Compras" + "\n"
                     
         self._labelConsulta = Label(self._frameSolicitarConsulta, text=texto, bg=BACKGROUND_FRAMES, font=FONT, fg=FG, justify=CENTER)
         self._labelConsulta.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
@@ -42,7 +48,7 @@ class ConsultaBDD(Frame):
         self._entryConsulta.pack(side=LEFT, fill=BOTH,expand=True, padx=10, pady=10)
 
         # Botón de consulta
-        self._botonConsulta = Button(self._frameSolicitarConsulta, text="Buscar", font=FONT)
+        self._botonConsulta = Button(self._frameSolicitarConsulta, text="Buscar", font=FONT, command=self.buscarConsulta)
         self._botonConsulta.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
         self._frameSolicitarConsulta.columnconfigure(1, weight=1)
@@ -57,5 +63,37 @@ class ConsultaBDD(Frame):
 
         self._frameMostrarResultadoConsulta.columnconfigure(1, weight=1)
 
+    def buscarConsulta(self):
+        valor = self._entryConsulta.get()
+        
+        if len(valor) != 0:
+            valor = int(valor)
+            self._mostrarConsulta(valor)
+                
+    def _mostrarConsulta(self, valor):
+        texto = ""
+        
+        if valor == 1:
+            for producto in Producto.getProductos().values():
+                texto += producto.__str__()
+                
+        elif valor == 2:
+            for servicio in Servicio.getServicios().values():
+                texto += servicio.__str__()
+        
+        elif valor == 3:
+            for empleado in Empleado.getEmpleados().values():
+                texto += empleado.__str__()
 
-
+        elif valor == 4:
+            for cliente in Cliente.getClientes().values():
+                texto += cliente.__str__()
+                
+        elif valor == 5:
+            for compra in Compra.getCompras().values():
+                texto += compra.__str__()
+                
+        else: 
+            texto += "Número no válido"
+            
+        self._mostrarResultadoConsulta.config(text=texto)

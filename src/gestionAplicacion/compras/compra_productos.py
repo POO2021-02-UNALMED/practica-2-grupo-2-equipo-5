@@ -97,7 +97,7 @@ class CompraProductos(Compra):
     
     @staticmethod
     def crearInterfaz(fecha_de_compra:str , descripcion:str , descuento:str, codigo_cliente:str, codigo_cajero:str, devolucion:str=None):
-       """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
         se pasa un booleano notificando que el valor está creado
         """  
         descuento = float(descuento)
