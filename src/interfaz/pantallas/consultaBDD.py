@@ -5,6 +5,7 @@ from gestionAplicacion.productos.producto import Producto
 from gestionAplicacion.compras.compra import Compra
 from gestionAplicacion.servicios.servicio import Servicio
 from gestionAplicacion.empleados.empleado import Empleado
+from gestionAplicacion.empleados.cajero import Cajero
 
 class ConsultaBDD(Frame):
 
@@ -82,8 +83,15 @@ class ConsultaBDD(Frame):
                 texto += servicio.__str__()
         
         elif valor == 3:
+            texto_cajeo = "****CAJEROS****\n"
+            texto_tecnico = "****TECNICOS****\n"
+
             for empleado in Empleado.getEmpleados().values():
-                texto += empleado.__str__()
+                if isinstance(empleado, Cajero):
+                    texto_cajeo += empleado.__str__()
+                else:
+                    texto_tecnico += empleado.__str__()
+            texto = texto_cajeo + "\n" +texto_tecnico
 
         elif valor == 4:
             for cliente in Cliente.getClientes().values():
