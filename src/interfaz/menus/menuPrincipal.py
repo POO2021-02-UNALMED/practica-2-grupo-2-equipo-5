@@ -80,25 +80,25 @@ class MenuPrincipal(Menu):
         self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarComprasProductos(self):
-        self._values["criterios"] = ["ID", "Descripcion", "Descuento", "Fecha de compra"]
+        self._values["criterios"] = ["ID", "Descripcion", "Descuento", "Fecha de compra", "Codigo Cliente", "Codigo Cajero"]
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Productos"
         self._values["descripcionProceso"] = "Gueno"
         from gestionAplicacion.compras.compra_productos import CompraProductos
         self._values["objeto"] = CompraProductos
-        self._values["atributos"] = ['id', 'descripcion', 'descuento', 'fecha_de_compra']
+        self._values["atributos"] = ['id', 'descripcion', 'descuento', 'fecha_de_compra', 'codigo_cliente', 'codigo_cajero']
         self._padre.mostrarFieldFrame(self._values)
 
     def _gestionarCompraServicio(self):
-        self._values["criterios"] = ["ID", "Descripcion", "Descuento","Tiempo de culminación"]
+        self._values["criterios"] = ["ID", "Descripcion", "Descuento", "Tiempo de culminación", "Codigo Tipo Servicio"]
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar Compra-Servicios"
         self._values["descripcionProceso"] = "Que mas pues"
         from gestionAplicacion.compras.compra_servicios import CompraServicios
         self._values["objeto"] = CompraServicios
-        self._values["atributos"] = ['id', 'descripcion', 'descuento', 'tiempo_de_culminacion']
+        self._values["atributos"] = ['id', 'descripcion', 'descuento', 'tiempo_de_culminacion', 'codigo_tipo_servicio']
         self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarCajeros(self):
