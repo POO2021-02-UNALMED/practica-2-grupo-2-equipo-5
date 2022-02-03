@@ -46,17 +46,23 @@ class FieldFrame(Frame):
         # Creamos los labels de acuerdo a los datos de entrada por el usuario
         numero_criterios = len(self._criterios)
         numero_valores = len(self._valores)
-        
+            
         for i in range(numero_criterios):
             Label(frameCriterioValor, text=self._criterios[i], bg="white", font=FONT2, fg=FG2, justify=CENTER).grid(row=i+1, column=0, sticky=EW,  padx=50, pady=10)
             
-        
         self.entrys = {}
 
         for i in range(numero_valores):
-           self.entry = Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER)
-           self.entrys[self._atributos[i]] = self.entry
-           self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=10)
+            
+            if self._criterios[i] in self._habilitado:
+                self.entry = Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER, state=DISABLED)
+                self.entrys[self._atributos[i]] = self.entry
+                self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=10)
+                
+            else:
+                self.entry = Entry(frameCriterioValor, bg="white", font=FONT2, fg=FG2, justify=CENTER)
+                self.entrys[self._atributos[i]] = self.entry
+                self.entry.grid(row=i+1, column=1, sticky=EW, padx=50, pady=10)
         
         # Expandimos los labels dentro del frame anidado 3
         frameCriterioValor.columnconfigure(1, weight=1)
