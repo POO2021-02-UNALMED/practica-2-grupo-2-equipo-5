@@ -1,5 +1,5 @@
+from gestionAplicacion.servicios.servicio import Servicio
 from gestionAplicacion.compras.compra import Compra
-
 class CompraServicios(Compra):
     """
         Clase encargada de clasificar las compras en
@@ -57,4 +57,26 @@ class CompraServicios(Compra):
             Método toString
         """
         return   super().__str__() \
-               + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n" 
+               + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n"
+    
+    @staticmethod
+    def hacerCompraServicio(codigo_compra, codigo_servicio):
+        """Asocia una compra de servicio a un servicio.
+
+        Args:
+            codigo_compra (int): Codigo de la compra
+            codigo_servicio (int): Codigo del servicio
+
+        Returns:
+            bool: ¿La transacción se realizó?
+        """        
+        
+        compra_servicio = Compra.getCompras().get(codigo_compra)
+        servicio = Servicio.getServicios().get(codigo_servicio)
+
+        if compra_servicio and servicio: #Existen?
+            if isinstance(compra_servicio, CompraServicios):
+                compra_servicio.agregarServicio(servicio)
+                return True
+        
+        return False

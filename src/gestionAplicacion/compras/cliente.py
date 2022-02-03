@@ -145,13 +145,21 @@ class Cliente:
         return flitro_clientes
 
     @classmethod
-    def buscarCliente(cls, codigo:int):
+    def buscarClienteCompras(cls, codigo):
         """Busca el cliente dependiendo del código que se ingresé. Si retorna None, es porque no hay un cliente con ese código
 
         Args:
             codigo (int): código
-        """
-        return cls._clientes.get(codigo)
+
+        Returns:
+            list: Lista de todas las compras hechas por un cliente
+        """        
+       
+        cliente = cls._clientes.get(codigo)
+        if cliente:
+            return list(cliente.getCompras().values())
+        return None
+
     
     
     def __str__(self) -> str:
