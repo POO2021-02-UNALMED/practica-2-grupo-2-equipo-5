@@ -61,15 +61,10 @@ class CompraServicios(Compra):
     
     @staticmethod
     def crearInterfaz(tiempo_de_culminacion:str, descripcion:str , descuento:str, codigo_tipo_servicio:str):
-        """Asocia una compra de servicio a un servicio.
-
-        Args:
-            codigo_compra (int): Codigo de la compra
-            codigo_servicio (int): Codigo del servicio
-
-        Returns:
-            bool: ¿La transacción se realizó?
-        """
+        """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        se pasa un booleano notificando que el valor está creado
+        """  
+       
         tiempo_de_culminacion = float(tiempo_de_culminacion)
         descuento = float(descuento)
         servicio = Servicio.getServicios().get(int(codigo_tipo_servicio))

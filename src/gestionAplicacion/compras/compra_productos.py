@@ -97,16 +97,9 @@ class CompraProductos(Compra):
     
     @staticmethod
     def crearInterfaz(fecha_de_compra:str , descripcion:str , descuento:str, codigo_cliente:str, codigo_cajero:str, devolucion:str=None):
-        """Asocia la compra producto a los clientes y al cajero.
-
-        Args:
-            codigo_cliente (int): Codigo del cliente
-            codigo_compra (int): Código de la compra
-            codigo_cajero (int): codigo del cajero
-
-        Returns:
-            bool: ¿Se completó la transacción?
-        """
+       """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        se pasa un booleano notificando que el valor está creado
+        """  
         descuento = float(descuento)
         codigo_cliente = int(codigo_cliente)
         codigo_cajero = int(codigo_cajero)
@@ -122,4 +115,3 @@ class CompraProductos(Compra):
                 return True
         
         return False
-

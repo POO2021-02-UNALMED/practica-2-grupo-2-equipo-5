@@ -7,6 +7,7 @@ from interfaz.pantallas.clientesValioso import ClienteValioso
 from interfaz.pantallas.devolucion import Devolucion
 from interfaz.pantallas.comision import Comision
 from interfaz.pantallas.informeTienda import Informe
+from interfaz.pantallas.consultaBDD import ConsultaBDD
 
 class MenuPrincipal(Menu):
     
@@ -43,11 +44,11 @@ class MenuPrincipal(Menu):
         menuProcesos.add_command(label="Gestionar Cajeros", command = self._gestionarCajeros)
         menuProcesos.add_command(label="Gestionar Técnicos", command=self._gestionarTecnico)
         menuProcesos.add_command(label="Gestionar Productos", command=self._gestionarProductos)
+        menuProcesos.add_command(label="Consulta Base de Datos", command=self._consultaBaseDeDatos)
         menuProcesos.add_command(label="Ver clientes valiosos", command=self._verClientesValiosos)
         menuProcesos.add_command(label="Devolucion compra productos", command=self._verDevolucionCompraProductos)
         menuProcesos.add_command(label="Calcular comisiones empleados", command=self._calcularComision)
         menuProcesos.add_command(label="Generar informe estado de tienda", command=self._generarInforme)
-        menuProcesos.add_command(label="Gestionar inventario", command=self._gestionarInventario)
         
         # Para el caso del submenu Ayuda
         menuAyuda.add_command(label="Acerca de", command=self.quienesSomos)
@@ -146,5 +147,5 @@ class MenuPrincipal(Menu):
     def _generarInforme(self):
         self._padre.mostrarFrameFuncionalidades(Informe)
 
-    def _gestionarInventario(self):
-        pass
+    def _consultaBaseDeDatos(self):
+        self._padre.mostrarFrameFuncionalidades(ConsultaBDD)
