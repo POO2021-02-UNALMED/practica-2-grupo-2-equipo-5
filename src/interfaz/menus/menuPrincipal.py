@@ -114,7 +114,7 @@ class MenuPrincipal(Menu):
         self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarTecnico(self):
-        self._values["criterios"] = ["ID", "Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Años de experiencias"]
+        self._values["criterios"] = ["ID", "Nombre", "Sueldo", "Comision", "Correo", "Número de contacto", "Años de experiencias"]
         self._values["habilitado"] = ["ID"]
         self._values["valores"] = [None]* len(self._values["criterios"])
         self._values["nombreProceso"] = "Gestionar empleados tecnicos"
