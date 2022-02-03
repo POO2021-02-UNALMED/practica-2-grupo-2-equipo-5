@@ -146,14 +146,9 @@ class Cliente:
 
     @classmethod
     def buscarClienteCompras(cls, codigo):
-        """Busca el cliente dependiendo del código que se ingresé. Si retorna None, es porque no hay un cliente con ese código
-
-        Args:
-            codigo (int): código
-
-        Returns:
-            list: Lista de todas las compras hechas por un cliente
-        """        
+        """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        se pasa un booleano notificando que el valor está creado
+        """  
        
         cliente = cls._clientes.get(codigo)
         if cliente:
@@ -162,10 +157,12 @@ class Cliente:
 
     @staticmethod
     def crearInterfaz( nombre:str, fecha_nacimiento:str, direccion:str, telefono:int):
+        """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        """    
         telefono = int(telefono)
         Cliente(nombre, fecha_nacimiento, telefono)
         return True
-        
+
     
     def __str__(self) -> str:
         """
