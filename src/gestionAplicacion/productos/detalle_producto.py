@@ -127,15 +127,9 @@ class DetalleProducto:
     
     @classmethod
     def hacerDevolucion(cls, codigo_compra, codigo_cliente):
-        """Hace la devolución del producto
-
-        Args:
-            codigo_compra (int): Codigo del producto
-            codigo_cliente ([type]): el cliente al que se le hace una devolución
-
-        Returns:
-            bool: ¿Se completó la transacción?
-        """        
+        """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
+        se pasa un booleano notificando que el valor está creado
+        """  
 
         #Rectificar el funcionamiento de esto.
         from gestionAplicacion.compras.compra import Compra
