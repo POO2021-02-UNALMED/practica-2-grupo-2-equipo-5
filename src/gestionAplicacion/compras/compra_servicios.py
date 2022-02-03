@@ -60,7 +60,7 @@ class CompraServicios(Compra):
                + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n"
     
     @staticmethod
-    def hacerCompraServicio(codigo_compra, codigo_servicio):
+    def crearInterfaz(tiempo_de_culminacion:str, descripcion:str , descuento:str, codigo_tipo_servicio:str):
         """Asocia una compra de servicio a un servicio.
 
         Args:
@@ -69,14 +69,14 @@ class CompraServicios(Compra):
 
         Returns:
             bool: ¿La transacción se realizó?
-        """        
-        
-        compra_servicio = Compra.getCompras().get(codigo_compra)
-        servicio = Servicio.getServicios().get(codigo_servicio)
+        """
+        tiempo_de_culminacion = float(tiempo_de_culminacion)
+        descuento = float(descuento)
+        servicio = Servicio.getServicios().get(int(codigo_tipo_servicio))
 
-        if compra_servicio and servicio: #Existen?
-            if isinstance(compra_servicio, CompraServicios):
-                compra_servicio.agregarServicio(servicio)
-                return True
+        if servicio: #Existen?
+            compra_servicio = CompraServicios(tiempo_de_culminacion,descripcion,descuento)
+            compra_servicio.agregarServicio(servicio)
+            return True
         
         return False

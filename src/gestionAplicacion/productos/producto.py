@@ -162,3 +162,9 @@ class Producto:
                + "Fecha Ingreso: "       + str(self._fecha_ingreso) + "\n" \
                + "Precio: "              + str(self._precio) + "\n" \
                + "Descripcion: "         + str(self._descripcion) + "\n"
+    
+    @staticmethod
+    def crearInterfaz(nombre:str, fecha_ingreso:str, precio:float, descripcion:str):
+        precio = float(precio)
+        Producto(nombre, fecha_ingreso, precio, descripcion)
+        return True

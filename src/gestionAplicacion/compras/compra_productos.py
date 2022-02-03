@@ -1,8 +1,8 @@
 from gestionAplicacion.compras.compra import Compra
 from gestionAplicacion.compras.cliente import Cliente
 from gestionAplicacion.empleados.empleado import Empleado
+from gestionAplicacion.empleados.cajero import Cajero
 
-from datetime import datetime
 class CompraProductos(Compra):
     """
         Clase encargada de clasificar las compras en
@@ -96,7 +96,7 @@ class CompraProductos(Compra):
                + "Devolución: " + str(self.isDevolucion()) + "\n"
     
     @staticmethod
-    def hacerCompraProducto(codigo_cliente, codigo_compra, codigo_cajero):
+    def crearInterfaz(fecha_de_compra:str , descripcion:str , descuento:str, codigo_cliente:str, codigo_cajero:str, devolucion:str=None):
         """Asocia la compra producto a los clientes y al cajero.
 
         Args:
@@ -106,13 +106,17 @@ class CompraProductos(Compra):
 
         Returns:
             bool: ¿Se completó la transacción?
-        """        
+        """
+        descuento = float(descuento)
+        codigo_cliente = int(codigo_cliente)
+        codigo_cajero = int(codigo_cajero)
+
         cliente = Cliente.getClientes().get(codigo_cliente)
-        compra = Compra.getCompras().get(codigo_compra)
         cajero = Empleado.getEmpleados().get(codigo_cajero)
 
-        if cliente and compra and cajero: #Todos debe existir:
-            if isinstance(compra, CompraProductos):
+        if cliente and cajero: #Todos debe existir:
+            if isinstance(cajero, Cajero):
+                compra = CompraProductos(fecha_de_compra, devolucion, descripcion, descuento)
                 compra.setCajero(cajero)
                 compra.setCliente(cliente)
                 return True

@@ -59,3 +59,12 @@ class Cajero(Empleado):
         """
         return   super().__str__() \
        	       + "Cantidad en Ventas: " + str(self._cantidadEnVentas) + "\n"
+    
+    @staticmethod
+    def crearInterfaz(nombre:str, sueldo:str, comision:str, cantidadEnVentas:str, correo:str, numeroContacto:str):
+        sueldo = float(sueldo)
+        comision = float(comision)
+        numeroContacto = int(numeroContacto)
+
+        Cajero(nombre,sueldo,comision,cantidadEnVentas,correo,numeroContacto)
+        return True

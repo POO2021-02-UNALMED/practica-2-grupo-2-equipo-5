@@ -103,5 +103,16 @@ class Tecnico(Empleado):
         """
         return   super().__str__() \
                + "Años de Experiencia: " + str(self._experiencia) + "\n" 
+    
+    @staticmethod
+    def crearInterfaz(nombre:str, sueldo:float, comision:float, experiencia:int, correo:str, numeroContacto:int):
+        sueldo = float(sueldo)
+        comision = float(comision)
+        experiencia = int(experiencia)
+        numeroContacto = int(numeroContacto)
+
+        Tecnico(nombre, sueldo,comision, experiencia, correo, numeroContacto)
+        return True
+
         
     

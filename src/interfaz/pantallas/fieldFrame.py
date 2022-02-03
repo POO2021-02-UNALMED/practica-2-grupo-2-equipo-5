@@ -1,4 +1,6 @@
 from tkinter import *
+
+from pytest import Instance
 from interfaz.estilos.styles import *
 
 
@@ -68,8 +70,8 @@ class FieldFrame(Frame):
         frameCriterioValor.columnconfigure(1, weight=1)
         
         # Mensaje
-        mensaje = Label(self, justify=CENTER, text="Gestion Cliente", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
-        mensaje.pack(side=TOP, fill=X, padx=10, pady=10)
+        self.mensaje = Label(self, justify=CENTER, text="", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
+        self.mensaje.pack(side=TOP, fill=X, padx=10, pady=10)
         
         # Botones
         frameBotones = Frame(self, bg=BACKGROUND_FRAMES)
@@ -84,8 +86,14 @@ class FieldFrame(Frame):
     def guardarObjeto(self):
 
         valores = {k:v.get() for k, v in self.entrys.items()}
-        
-        self._objeto(**valores)
+        valores.pop("id")
+        esta_guardo = self._objeto.crearInterfaz(**valores)
+        if esta_guardo:
+            self.mensaje.config(text="Fue Exitosó la operación")
+        else:
+            self.mensaje.config(text="La cagó")
+
+
 
         [item.delete(0, END) for item in self.entrys.values()]
 

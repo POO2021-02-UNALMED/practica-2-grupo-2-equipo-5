@@ -160,7 +160,12 @@ class Cliente:
             return list(cliente.getCompras().values())
         return None
 
-    
+    @staticmethod
+    def crearInterfaz( nombre:str, fecha_nacimiento:str, direccion:str, telefono:int):
+        telefono = int(telefono)
+        Cliente(nombre, fecha_nacimiento, telefono)
+        return True
+        
     
     def __str__(self) -> str:
         """

@@ -27,7 +27,6 @@ class Compra:
 
         # Relación con Cliente
         self._cliente = None
-
         # Aumentar el indice del identificador
         Compra._index_codigo_compra += 1
 
