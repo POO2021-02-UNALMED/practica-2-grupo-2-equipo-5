@@ -52,13 +52,6 @@ class CompraServicios(Compra):
         total = sum([servicio.getPrecio() for servicio in self._servicios])
         return total
 
-    def __str__(self) -> str:
-        """
-            Método toString
-        """
-        return   super().__str__() \
-               + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n"
-    
     @staticmethod
     def crearInterfaz(tiempo_de_culminacion:str, descripcion:str , descuento:str, codigo_tipo_servicio:str):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
@@ -75,3 +68,10 @@ class CompraServicios(Compra):
             return True
         
         return False
+
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return   super().__str__() \
+               + "Tiempo de culminacion: " + str(self.getTiempoDeCulminacion()) + "\n"

@@ -87,14 +87,6 @@ class CompraProductos(Compra):
         total = sum([detalle_producto.getProducto().getPrecio() for detalle_producto in self._detalles_productos.values()])
         return total
 
-    def __str__(self) -> str:
-        """
-            Método toString
-        """
-        return   super().__str__() \
-               + "Fecha de compra: " + str(self.getFechaDeCompra()) + "\n" \
-               + "Devolución: " + str(self.isDevolucion()) + "\n"
-    
     @staticmethod
     def crearInterfaz(fecha_de_compra:str , descripcion:str , descuento:str, codigo_cliente:str, codigo_cajero:str, devolucion:str=None):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
@@ -115,3 +107,11 @@ class CompraProductos(Compra):
                 return True
         
         return False
+
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return   super().__str__() \
+               + "Fecha de compra: " + str(self.getFechaDeCompra()) + "\n" \
+               + "Devolución: " + str(self.isDevolucion()) + "\n"

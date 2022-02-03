@@ -53,13 +53,6 @@ class Cajero(Empleado):
             self._compras_productos_vendidas = {}
         self._compras_productos_vendidas[compra_productos.getCodigoCompra()] = compra_productos
 
-    def __str__(self) -> str:
-        """
-            Método toString
-        """
-        return   super().__str__() \
-       	       + "Cantidad en Ventas: " + str(self._cantidadEnVentas) + "\n"
-    
     @staticmethod
     def crearInterfaz(nombre:str, sueldo:str, comision:str, cantidadEnVentas:str, correo:str, numeroContacto:str):
         sueldo = float(sueldo)
@@ -68,3 +61,12 @@ class Cajero(Empleado):
 
         Cajero(nombre,sueldo,comision,cantidadEnVentas,correo,numeroContacto)
         return True
+
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return   super().__str__() \
+       	       + "Cantidad en Ventas: " + str(self._cantidadEnVentas) + "\n"
+    
+

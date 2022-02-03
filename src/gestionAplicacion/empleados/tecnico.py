@@ -71,11 +71,11 @@ class Tecnico(Empleado):
             self._servicios_revisados = {}
         self._servicios_revisados[servicio.getId()] = servicio
     
-    def getCantidadEnVentas(self)->int:
+    def getCantidadEnVentas(self)->float:
         """Se calculó el total de los servicos realizados y de los servicios revisados
 
         Returns:
-            int: Retorna la suma de los servicios realizados y revisados.
+            float: Retorna la suma de los servicios realizados y revisados.
         """
 
         total = 0
@@ -95,15 +95,7 @@ class Tecnico(Empleado):
                     total += len(servicio)
 
         return total
-    
 
-    def __str__(self) -> str:
-        """
-            Método toString
-        """
-        return   super().__str__() \
-               + "Años de Experiencia: " + str(self._experiencia) + "\n" 
-    
     @staticmethod
     def crearInterfaz(nombre:str, sueldo:float, comision:float, experiencia:int, correo:str, numeroContacto:int):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
@@ -116,6 +108,11 @@ class Tecnico(Empleado):
 
         Tecnico(nombre, sueldo,comision, experiencia, correo, numeroContacto)
         return True
-
-        
     
+
+    def __str__(self) -> str:
+        """
+            Método toString
+        """
+        return   super().__str__() \
+               + "Años de Experiencia: " + str(self._experiencia) + "\n" 
