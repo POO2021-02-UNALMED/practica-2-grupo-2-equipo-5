@@ -1,5 +1,6 @@
 from tkinter import *
 from interfaz.estilos.styles import *
+from gestionAplicacion.compras.cliente import Cliente
 
 class Devolucion(Frame):
     
@@ -37,7 +38,7 @@ class Devolucion(Frame):
         self._codigoCliente.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
         # Botón de consulta
-        self._botonBuscar = Button(self._frameBuscarCliente, text="Buscar", font=FONT)
+        self._botonBuscar = Button(self._frameBuscarCliente, text="Buscar", font=FONT, command=self.buscarCliente)
         self._botonBuscar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
         # Expandir los widgets dentro del contenedor
@@ -47,6 +48,9 @@ class Devolucion(Frame):
         # Frame anidado debajo en el cuál se van a mostrar las compras realizadas por un cliente de acuerdo al codigo pasado en el Entry de arriba
         self._frameMostrarComprasCliente = Frame(self, bg="white")
         self._frameMostrarComprasCliente.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=10)
+        
+        self._mostrarResultadoConsulta = Label(self._frameMostrarComprasCliente, bg="white", font=FONT3, fg=FG2)
+        self._mostrarResultadoConsulta.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=10)
         
         # Expandir los widgets dentro del contenedor
         self._frameMostrarComprasCliente.columnconfigure(1, weight=1)
@@ -65,11 +69,38 @@ class Devolucion(Frame):
         self._codigoCompra.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
         # Botón de aceptar y elimina la compra seleccionada con el código de las compras del cliente
-        self._botonAceptar = Button(self._frameSeleccionarCompraADevolver, text="Aceptar", font=FONT)
+        self._botonAceptar = Button(self._frameSeleccionarCompraADevolver, text="Aceptar", font=FONT, command=self.eliminarCompraCliente)
         self._botonAceptar.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
         # Expandir los widgets dentro del contenedor
         self._frameSeleccionarCompraADevolver.columnconfigure(1, weight=1)
         
+    def buscarCliente(self):
+        valor= self._codigoCliente.get()
         
+        if len(valor) != 0:
+            valor = int(valor)
+            self._cliente = Cliente.getClientes()[valor]
+            self._showCompra(self._cliente)
+        
+        self._codigoCliente.delete(0, END)
+            
+        
+    def _showCompra(self, cliente):
+        texto = ""
+        
+        for compra in cliente.getCompras().values():
+            texto += compra.__str__() + "\n"
+            
+        self._mostrarResultadoConsulta.config(text=texto)
+        
+    def eliminarCompraCliente(self):
+        valor = self._codigoCompra.get()
+        
+        if len(valor) != 0:
+            valor = int(valor)
+            del self._cliente.getCompras()[valor]
+            
+        self._codigoCompra.delete(0, END)
+            
         
