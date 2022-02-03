@@ -9,6 +9,7 @@ BACKGROUND_P = "#ABB2B9"
 FONT = ("Arial", 20)
 FONT2 = ("Arial", 16)
 FONT3 = ("Arial", 12)
+FONT4 = ("Arial", 10)
 BG1 = "#2C3E50"
 TEXT1 = "#FDFEFE"
 COPY1 = "¡Bienvenidos a PJ Tech!" 
