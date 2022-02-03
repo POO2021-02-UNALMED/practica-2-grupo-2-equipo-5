@@ -20,7 +20,7 @@ class Comision(Frame):
         
     def _mostrarTitulo(self):
         # Label superior con el título de la pantalla
-        self._titulo = Label(self, justify=CENTER, text="Calculo de Comisones", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
+        self._titulo = Label(self, justify=CENTER, text="Calculo de Comisiones", bg=BACKGROUND_FRAMES, font=FONT, fg=FG)
         self._titulo.pack(side=TOP, fill=X, padx=100, pady=10)
         
     def _mostrarBotonCalcular(self):
