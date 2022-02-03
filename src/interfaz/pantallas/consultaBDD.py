@@ -58,3 +58,4 @@ class ConsultaBDD(Frame):
         self._frameMostrarResultadoConsulta.columnconfigure(1, weight=1)
 
 
+
