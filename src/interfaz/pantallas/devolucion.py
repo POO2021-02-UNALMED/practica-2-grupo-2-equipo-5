@@ -30,7 +30,7 @@ class Devolucion(Frame):
         
         # Label con el título Ingrese Codigo del Cliente
         self._labelIngreseCodigoCliente = Label(self._frameBuscarCliente, text="Codigo del Cliente", bg=BACKGROUND_FRAMES, font=FONT, fg=FG, justify=CENTER)
-        self._labelIngreseCodigoCliente.pack(side=LEFT, fill=BOTH, expand=True, padx=100, pady=10)
+        self._labelIngreseCodigoCliente.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
         
         # Entry para ingresar el codigo por el cuál se quiere consultar las compras asociadas a un cliente
         self._codigoCliente = Entry(self._frameBuscarCliente, bg="white", font=FONT2, fg=FG2, justify=CENTER)
@@ -54,7 +54,7 @@ class Devolucion(Frame):
     def _seleccionCompraADevolver(self):
          # Frame anidado debajo del todo en el cuál se le van a agregar los widgets para hacer la devolucion de un producto por parte de un cliente
         self._frameSeleccionarCompraADevolver= Frame(self, bg=BACKGROUND_FRAMES)
-        self._frameSeleccionarCompraADevolver.pack(side=TOP, fill=X, padx=100, pady=20)
+        self._frameSeleccionarCompraADevolver.pack(side=TOP, fill=X, padx=100, pady=100)
         
         # Label con el título Ingrese Codigo de la Compra a Devolver
         self._labelIngreseCodigoCompra = Label(self._frameSeleccionarCompraADevolver, text="Codigo de la Compra a Devolver", bg=BACKGROUND_FRAMES, font=FONT, fg=FG, justify=CENTER)

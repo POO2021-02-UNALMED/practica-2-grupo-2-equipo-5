@@ -34,10 +34,25 @@ class Comision(Frame):
         self._frameMostrarComisiones.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=30)
         
         # Label        
-        self._labelMostrarComisiones = Label(self._frameMostrarComisiones, text="", bg="white", font=FONT4, fg=FG2, justify=CENTER)
+        self._labelMostrarComisiones = Label(self._frameMostrarComisiones, bg="white", font=FONT3, fg=FG2)
         self._labelMostrarComisiones.pack(side=TOP, fill=X, expand=True, padx=10, pady=10)
+        
+         # Se crea un widget tipo Text 
+        self._texto = Text(self._labelMostrarComisiones)
+        self._texto.grid(row=0, column=0, sticky=EW, padx=100, pady=10)
+        
+        # Se crea un widget tipo Scrollbar
+        self._scrollbar = Scrollbar(self._labelMostrarComisiones, command=self._texto.yview)
+        
+        # Se le asigna el comando al Text de que va a contener un scrollbar vertical
+        self._texto.config(yscrollcommand=self._scrollbar.set)
+        
+        # Se empaqueta el scrollbar
+        self._scrollbar.grid(row=0, column=1, sticky=NS, pady=10)
+        
         self._frameMostrarComisiones.columnconfigure(1, weight=1)
-    
+        self._labelMostrarComisiones.columnconfigure(1, weight=1)
+        
     def _calcularComision(self):
         comisiones = Empleado.calcularComision()
         self._showComisiones(comisiones)
@@ -48,7 +63,7 @@ class Comision(Frame):
         for val in empleados:
             texto += val["empleado"].__str__() + "\n"
             
-        self._labelMostrarComisiones.config(text=texto)
+        self._texto.insert(END, texto)
         
         
   

@@ -40,7 +40,7 @@ class ConsultaBDD(Frame):
                     + "4. Clientes" + "\n" \
                     + "5. Compras" + "\n"
                     
-        self._labelConsulta = Label(self._frameSolicitarConsulta, text=texto, bg=BACKGROUND_FRAMES, font=FONT, fg=FG, justify=CENTER)
+        self._labelConsulta = Label(self._frameSolicitarConsulta, text=texto, bg=BACKGROUND_FRAMES, font=FONT3, fg=FG, justify=CENTER)
         self._labelConsulta.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
         # Entry para ingresar el valor por el cuál se quiere consultar un cliente valioso
@@ -57,11 +57,26 @@ class ConsultaBDD(Frame):
         # Frame anidado debajo en el cuál se van a mostrar los clientes valiosos de acuerdo al valor valioso pasado en el Entry de arriba
         self._frameMostrarResultadoConsulta = Frame(self, bg="white")
         self._frameMostrarResultadoConsulta.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=10)
-
-        self._mostrarResultadoConsulta = Label(self._frameMostrarResultadoConsulta, text="", bg="white", font=FONT3, fg=FG2, justify=CENTER)
+        
+        # Se crea Label en el cuál se mostrarán los resultados de la consulta implementando un Scrollbar
+        self._mostrarResultadoConsulta = Label(self._frameMostrarResultadoConsulta, bg="white", font=FONT3, fg=FG2)
         self._mostrarResultadoConsulta.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=10)
+        
+        # Se crea un widget tipo Text 
+        self._texto = Text(self._mostrarResultadoConsulta)
+        self._texto.grid(row=0, column=0, sticky=EW, padx=100, pady=10)
+        
+        # Se crea un widget tipo Scrollbar
+        self._scrollbar = Scrollbar(self._mostrarResultadoConsulta, command=self._texto.yview)
+        
+        # Se le asigna el comando al Text de que va a contener un scrollbar vertical
+        self._texto.config(yscrollcommand=self._scrollbar.set)
+        
+        # Se empaqueta el scrollbar
+        self._scrollbar.grid(row=0, column=1, sticky=NS, pady=10)
 
         self._frameMostrarResultadoConsulta.columnconfigure(1, weight=1)
+        self._mostrarResultadoConsulta.columnconfigure(1, weight=1)
 
     def buscarConsulta(self):
         valor = self._entryConsulta.get()
@@ -75,25 +90,25 @@ class ConsultaBDD(Frame):
         
         if valor == 1:
             for producto in Producto.getProductos().values():
-                texto += producto.__str__()
+                texto += producto.__str__() + "\n"
                 
         elif valor == 2:
             for servicio in Servicio.getServicios().values():
-                texto += servicio.__str__()
+                texto += servicio.__str__() + "\n"
         
         elif valor == 3:
             for empleado in Empleado.getEmpleados().values():
-                texto += empleado.__str__()
+                texto += empleado.__str__() + "\n"
 
         elif valor == 4:
             for cliente in Cliente.getClientes().values():
-                texto += cliente.__str__()
+                texto += cliente.__str__() + "\n"
                 
         elif valor == 5:
             for compra in Compra.getCompras().values():
-                texto += compra.__str__()
+                texto += compra.__str__() + "\n"
                 
         else: 
             texto += "Número no válido"
             
-        self._mostrarResultadoConsulta.config(text=texto)
+        self._texto.insert(END, texto)

@@ -48,11 +48,24 @@ class ClienteValioso(Frame):
         self._frameMostrarClientesValiosos = Frame(self, bg="white")
         self._frameMostrarClientesValiosos.pack(side=TOP, fill=BOTH, expand=True, padx=100, pady=10)
         
-        self._mostrarClientesValiosos = Label(self._frameMostrarClientesValiosos, text="", bg="white", font=FONT3, fg=FG2, justify=CENTER)
+        self._mostrarClientesValiosos = Label(self._frameMostrarClientesValiosos, bg="white", font=FONT3, fg=FG2)
         self._mostrarClientesValiosos.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=10)
         
-        self._frameMostrarClientesValiosos.columnconfigure(1, weight=1)
+        # Se crea un widget tipo Text 
+        self._texto = Text(self._mostrarClientesValiosos)
+        self._texto.grid(row=0, column=0, sticky=EW, padx=100, pady=10)
         
+        # Se crea un widget tipo Scrollbar
+        self._scrollbar = Scrollbar(self._mostrarClientesValiosos, command=self._texto.yview)
+        
+        # Se le asigna el comando al Text de que va a contener un scrollbar vertical
+        self._texto.config(yscrollcommand=self._scrollbar.set)
+        
+        # Se empaqueta el scrollbar
+        self._scrollbar.grid(row=0, column=1, sticky=NS, pady=10)
+        
+        self._frameMostrarClientesValiosos.columnconfigure(1, weight=1)
+        self._mostrarClientesValiosos.columnconfigure(1, weight=1)
         
     def buscarClientesValiosos(self):
         valor = self._valorValioso.get()
@@ -71,6 +84,6 @@ class ClienteValioso(Frame):
         for val in clientes:
             texto += val["cliente"].__str__() + "Total: " + str(val["total"]) + "\n\n"
             
-        self._mostrarClientesValiosos.config(text=texto)
+        self._texto.insert(END, texto)
         
         
