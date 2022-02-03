@@ -124,7 +124,22 @@ class DetalleProducto:
             cargar de nuevo los datos
         """
         cls._contador = indice
+    
+    @classmethod
+    def hacerDevolucion(cls, codigo_compra, codigo_cliente):
+
+        #Rectificar el funcionamiento de esto.
+        from gestionAplicacion.compras.compra import Compra
+        compra = Compra.getCompras.get(codigo_compra)
+        if compra: #Verificamos de que la compra exista
+            if compra.getCliente().getCedula() == codigo_cliente: #Verificamos de que la compra pertnezca al cliente
+                for detalle in cls._detalles_productos.values():
+                    if detalle.getCompraProductos() == compra:
+                        detalle.setEsDevolucion(True)
+                        return True
         
+        return False
+
     def __str__(self) -> str:
         """
             Método toString
