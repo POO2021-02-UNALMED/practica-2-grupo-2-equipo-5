@@ -88,8 +88,8 @@ class FieldFrame(Frame):
         
         valores = {k:v.get() for k, v in self.entrys.items()}
 
-        for entrada in valores.values():
-            if len(entrada) == 0:
+        for key,entrada in valores.items():
+            if len(entrada) == 0 and key != "id":
                 try:
                     raise ExcepcionCamposNulos()
                 except ExcepcionCamposNulos as f:
@@ -103,7 +103,7 @@ class FieldFrame(Frame):
         if esta_guardo:
             self.mensaje.config(text="Fue Exitosó la operación")
         else:
-            self.mensaje.config(text="La cagó")
+            self.mensaje.config(text="Hay un error en los códigos ó revisa el tipo de dato")
 
 
 

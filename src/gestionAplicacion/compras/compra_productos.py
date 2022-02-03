@@ -91,10 +91,13 @@ class CompraProductos(Compra):
     def crearInterfaz(fecha_de_compra:str , descripcion:str , descuento:str, codigo_cliente:str, codigo_cajero:str, devolucion:str=None):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
         se pasa un booleano notificando que el valor está creado
-        """  
-        descuento = float(descuento)
-        codigo_cliente = int(codigo_cliente)
-        codigo_cajero = int(codigo_cajero)
+        """
+        try:
+            descuento = float(descuento)
+            codigo_cliente = int(codigo_cliente)
+            codigo_cajero = int(codigo_cajero)
+        except ValueError:
+            return False
 
         cliente = Cliente.getClientes().get(codigo_cliente)
         cajero = Empleado.getEmpleados().get(codigo_cajero)

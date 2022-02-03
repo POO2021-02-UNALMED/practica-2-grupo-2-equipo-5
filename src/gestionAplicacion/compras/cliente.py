@@ -158,10 +158,13 @@ class Cliente:
     @staticmethod
     def crearInterfaz( nombre:str, fecha_nacimiento:str, direccion:str, telefono:int):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
-        """    
-        telefono = int(telefono)
-        Cliente(nombre, fecha_nacimiento, telefono)
-        return True
+        """
+        try:
+            telefono = int(telefono)
+            Cliente(nombre, fecha_nacimiento, telefono)
+            return True
+        except ValueError:
+            return False
 
     
     def __str__(self) -> str:

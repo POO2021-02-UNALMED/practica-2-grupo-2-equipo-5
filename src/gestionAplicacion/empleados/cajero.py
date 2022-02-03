@@ -55,9 +55,13 @@ class Cajero(Empleado):
 
     @staticmethod
     def crearInterfaz(nombre:str, sueldo:str, comision:str, cantidadEnVentas:str, correo:str, numeroContacto:str):
-        sueldo = float(sueldo)
-        comision = float(comision)
-        numeroContacto = int(numeroContacto)
+        """Conversion de datos cuando vienen de la interfaz"""
+        try:
+            sueldo = float(sueldo)
+            comision = float(comision)
+            numeroContacto = int(numeroContacto)
+        except ValueError:
+            return False
 
         Cajero(nombre,sueldo,comision,cantidadEnVentas,correo,numeroContacto)
         return True

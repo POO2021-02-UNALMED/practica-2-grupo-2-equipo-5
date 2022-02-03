@@ -53,17 +53,16 @@ class CompraServicios(Compra):
         return total
 
     @staticmethod
-    def crearInterfaz(tiempo_de_culminacion:str, descripcion:str , descuento:str, codigo_tipo_servicio:str):
+    def boo(tiempo_de_culminacion:str, descripcion:str , descuento:str, codigo_tipo_servicio:str):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
         se pasa un booleano notificando que el valor está creado
         """  
-        try: # MAnejo de conversion de datos
+        try:
             tiempo_de_culminacion = float(tiempo_de_culminacion)
             descuento = float(descuento)
             servicio = Servicio.getServicios().get(int(codigo_tipo_servicio))
         except ValueError:
             return False
-
         if servicio: #Existen?
             compra_servicio = CompraServicios(tiempo_de_culminacion,descripcion,descuento)
             compra_servicio.agregarServicio(servicio)

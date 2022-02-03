@@ -157,8 +157,11 @@ class Producto:
     def crearInterfaz(nombre:str, fecha_ingreso:str, precio:float, descripcion:str):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
         se pasa un booleano notificando que el valor está creado
-        """        
-        precio = float(precio)
+        """
+        try:
+            precio = float(precio)
+        except ValueError:
+            return False
         Producto(nombre, fecha_ingreso, precio, descripcion)
         return True
 

@@ -100,11 +100,14 @@ class Tecnico(Empleado):
     def crearInterfaz(nombre:str, sueldo:float, comision:float, experiencia:int, correo:str, numeroContacto:int):
         """Crea los valores de esta clase, que lo de la interfaz se inicializado por esta clase
         se pasa un booleano notificando que el valor está creado
-        """  
-        sueldo = float(sueldo)
-        comision = float(comision)
-        experiencia = int(experiencia)
-        numeroContacto = int(numeroContacto)
+        """
+        try:
+            sueldo = float(sueldo)
+            comision = float(comision)
+            experiencia = int(experiencia)
+            numeroContacto = int(numeroContacto)
+        except ValueError:
+            return False
 
         Tecnico(nombre, sueldo,comision, experiencia, correo, numeroContacto)
         return True
