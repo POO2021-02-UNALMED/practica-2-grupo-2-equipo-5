@@ -131,9 +131,6 @@ class Empleado():
         """
             Método toString
         """
-        return    "Cédula: "          + str(self.getCedula()) + "\n" \
-                + "Nombre: "          + str(self.getNombre()) + "\n" \
-                + "Sueldo: "          + str(self.getSueldo()) + "\n" \
-                + "Comision: "        + str(self.getComision()) + "\n" \
-                + "Correo: "          + str(self.getCorreo()) + "\n" \
-                + "Numero Contacto: " + str(self.getNumeroContacto()) + "\n"
+        return    "Cédula: "          + str(self.getCedula())  + "\n" \
+                + "Nombre: "          + str(self.getNombre())  + "\n" \
+                + "Comision: "        + str(self.getComision())  + "\n"

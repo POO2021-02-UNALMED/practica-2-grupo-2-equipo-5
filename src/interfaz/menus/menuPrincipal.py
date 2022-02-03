@@ -76,7 +76,7 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.compras.cliente import Cliente
         self._values["objeto"] = Cliente
         self._values["atributos"] = ['nombre', 'fecha_nacimiento', 'direccion', 'telefono']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarComprasProductos(self):
         self._values["criterios"] = ["Descripcion", "Descuento", "Fecha de compra"]
@@ -86,7 +86,7 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.compras.compra_productos import CompraProductos
         self._values["objeto"] = CompraProductos
         self._values["atributos"] = ['descripcion', 'descuento', 'fecha_de_compra']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
 
     def _gestionarCompraServicio(self):
         self._values["criterios"] = ["Descripcion", "Descuento","Tiempo de culminación"]
@@ -96,7 +96,7 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.compras.compra_servicios import CompraServicios
         self._values["objeto"] = CompraServicios
         self._values["atributos"] = ['descripcion', 'descuento', 'tiempo_de_culminacion']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarCajeros(self):
         self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Correo", "Número de contacto", "Cantidad de ventas"]
@@ -106,7 +106,7 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.empleados.cajero import Cajero
         self._values["objeto"] = Cajero
         self._values["atributos"] = ['nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'cantidadEnVentas']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarTecnico(self):
         self._values["criterios"] = ["Nombre", "Sueldo", "Comision", "Corre", "Número de contacto", "Años de experiencias"]
@@ -116,7 +116,7 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.empleados.tecnico import Tecnico
         self._values["objeto"] = Tecnico
         self._values["atributos"] = ['nombre', 'sueldo', 'comision', 'correo', 'numeroContacto', 'experiencia']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
     
     def _gestionarProductos(self):
         self._values["criterios"] = ["Nombre", "Fecha de Ingreso", "Precio", "Descripción"]
@@ -126,16 +126,16 @@ class MenuPrincipal(Menu):
         from gestionAplicacion.productos.producto import Producto
         self._values["objeto"] = Producto
         self._values["atributos"] = ['nombre', 'fecha_ingreso', 'precio', 'descripcion']
-        self._controlador.mostrarFieldFrame(self._values)
+        self._padre.mostrarFieldFrame(self._values)
     
     def _verClientesValiosos(self):
-        self._controlador.mostrarFrameFuncionalidades(ClienteValioso)
+        self._padre.mostrarFrameFuncionalidades(ClienteValioso)
 
     def _verDevolucionCompraProductos(self):
-        self._controlador.mostrarFrameFuncionalidades(Devolucion)
+        self._padre.mostrarFrameFuncionalidades(Devolucion)
 
     def _calcularComision(self):
-        self._controlador.mostrarFrameFuncionalidades(Comision)
+        self._padre.mostrarFrameFuncionalidades(Comision)
 
     def _generarInforme(self):
         pass

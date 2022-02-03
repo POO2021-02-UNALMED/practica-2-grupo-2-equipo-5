@@ -19,7 +19,7 @@ class Principal(Toplevel):
         self.title("PJ Tech")
         self.geometry("900x800")
         # Se agrega el menu
-        menuPrincipal = MenuPrincipal(padre, self)
+        menuPrincipal = MenuPrincipal(self, padre)
         self['menu'] = menuPrincipal
         
         # Inicio
